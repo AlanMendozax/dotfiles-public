@@ -19,8 +19,9 @@ if type -q eza
 end
 
 # Go
+set -g GOROOT ../usr/bin/go
+set -gx PATH $GOROOT/bin $PATH
 set -g GOPATH $HOME/go
-set -gx PATH $GOPATH/bin $PATH
 
 starship init fish | source
 enable_transience
