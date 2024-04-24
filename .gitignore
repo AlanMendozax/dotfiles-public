@@ -5,6 +5,7 @@
 .termux/
 .tmux/
 .wget-hsts
+go
 storage/
 !.config/nvim
 !.config/tmux/tmux.conf
