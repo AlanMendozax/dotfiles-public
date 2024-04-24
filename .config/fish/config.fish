@@ -18,6 +18,9 @@ if type -q eza
   alias lla "ll -a"
 end
 
+# NodeJS
+set -gx PATH node_modules/.bin $PATH
+
 # Go
 set -g GOPATH $HOME/go
 set -gx PATH $GOPATH/bin $PATH
