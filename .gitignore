@@ -2,6 +2,8 @@
 .cache/
 .ghq
 .local/
+.npm
+.npmrc
 .ssh/
 .termux/
 .tmux/
@@ -16,6 +18,7 @@ storage/
 .config/fish/fish_variables
 .config/fish/fish_plugins
 .config/fish/completions/
+.config/fish/conf.d/
 .config/fish/functions
 !.config/fish/functions/fzf_change_directory.fish
 !.config/fish/functions/fish_user_key_bindings.fish
