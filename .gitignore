@@ -10,7 +10,9 @@
 .wget-hsts
 go
 storage/
-!.config/nvim
+.config/nvim
+!.config/nvim/init.lua
+!.config/nvim/lua
 !.config/tmux/tmux.conf
 .config/tmux/plugins
 !.config/starship.toml
