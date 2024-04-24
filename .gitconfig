@@ -13,3 +13,5 @@
   ba = branch -a
   bm = branch --merged
   bn = branch --no-merged
+[ghq]
+  root = ~/.ghq
