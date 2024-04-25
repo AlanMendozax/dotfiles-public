@@ -79,6 +79,9 @@ return {
 						},
 					},
 				},
+        rust_analyzer = {
+          mason = false,
+        },
 				lua_ls = {
           mason = false,
 					-- enabled = false,
