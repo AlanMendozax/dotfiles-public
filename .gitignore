@@ -17,6 +17,8 @@ data
 .termux/
 .tmux/
 .wget-hsts
+.config/yarn/
+.yarnrc
 go
 storage/
 .config/nvim/.git
