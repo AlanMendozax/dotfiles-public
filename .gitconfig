@@ -13,7 +13,5 @@
   ba = branch -a
   bm = branch --merged
   bn = branch --no-merged
-[hub]
-  protocol = https
 [ghq]
   root = ~/.ghq
