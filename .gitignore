@@ -19,6 +19,7 @@ data
 .wget-hsts
 .config/yarn/
 .yarnrc
+developments
 go
 storage/
 .config/nvim/.git

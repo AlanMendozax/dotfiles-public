@@ -12,6 +12,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
+        "pyright",
 			})
 		end,
 	},
@@ -73,8 +74,6 @@ return {
 				},
 				html = {},
 				yamlls = {
-          on_attach = on_attach,
-          capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 					settings = {
 						yaml = {
 							keyOrdering = false,
@@ -151,7 +150,13 @@ return {
 					},
 				},
 			},
-			setup = {},
+			setup = {
+        tsserver = function(_, opts)
+          --require("typescript").setup({ server = opts })
+          --require("javascript").setup({ server = opts })
+          --return true
+        end,
+      },
 		},
 	},
 }
