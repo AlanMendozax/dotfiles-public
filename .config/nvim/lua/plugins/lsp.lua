@@ -12,7 +12,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
-        "pyright",
+        --"pyright",
 			})
 		end,
 	},
@@ -83,6 +83,19 @@ return {
         rust_analyzer = {
           mason = false,
         },
+        pyright = {
+          mason = false,
+          single_file_support = true,
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true
+              },
+            },
+          },
+        },
 				lua_ls = {
           mason = false,
 					-- enabled = false,
@@ -150,13 +163,7 @@ return {
 					},
 				},
 			},
-			setup = {
-        tsserver = function(_, opts)
-          --require("typescript").setup({ server = opts })
-          --require("javascript").setup({ server = opts })
-          --return true
-        end,
-      },
+			setup = {},
 		},
 	},
 }
