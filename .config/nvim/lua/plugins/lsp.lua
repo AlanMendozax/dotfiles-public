@@ -14,6 +14,7 @@ return {
 				"css-lsp",
         "black",
         "mypy",
+        "debugpy"
 			})
 		end,
 	},
