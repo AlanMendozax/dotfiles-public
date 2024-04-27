@@ -13,7 +13,7 @@ return {
 				"typescript-language-server",
 				"css-lsp",
         "black",
-        --"pyright",
+        "mypy",
 			})
 		end,
 	},
