@@ -1,21 +1,24 @@
 -- Plugin for formatting code:
 return {
-  {
-    -- https://github.com/sbdchd/neoformat
-    'sbdchd/neoformat',
-    event = "BufWritePre",
-    config = function ()
-      vim.g.neoformat_enabled_javascript = {"prettier"}
-      vim.g.neoformat_enabled_typescript = {"prettier"}
-      vim.g.neoformat_enabled_html = {"prettier"}
-      vim.g.neoformat_enabled_css = {"prettier"}
-      vim.g.neoformat_enabled_python = {"black"}
-      vim.cmd([[
-         augroup fmt
-           autocmd!
-           autocmd BufWritePre * silent Neoformat
-         augroup END
-      ]])
-  end
-  },
+  "stevearc/conform.nvim",
+  require("conform").setup({
+    formatters_by_ft = {
+      javascript = { "prettier" },
+      typescript = { "prettier" },
+      css = { "prettier" },
+      html = { "prettier" },
+      json = { "prettier" },
+      yaml = { "prettier" },
+      lua = { "stylua" },
+      python = { "black" },
+    },
+  }),
+
+  -- Format code on save:
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+      require("conform").format({ bufnr = args.buf })
+    end,
+  }),
 }
