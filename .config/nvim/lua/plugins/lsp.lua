@@ -12,9 +12,10 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
+        "pyright",
         "black",
         "mypy",
-        "debugpy"
+        "debugpy",
 			})
 		end,
 	},
@@ -85,19 +86,7 @@ return {
         rust_analyzer = {
           mason = false,
         },
-        pyright = {
-          mason = false,
-          single_file_support = true,
-          settings = {
-            python = {
-              analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "openFilesOnly",
-                useLibraryCodeForTypes = true
-              },
-            },
-          },
-        },
+        pyright = {},
 				lua_ls = {
           mason = false,
 					-- enabled = false,

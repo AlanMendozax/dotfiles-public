@@ -13,7 +13,7 @@ alias g git
 alias lg lazygit
 command -qv nvim && alias vim nvim
 
-# nvim as default editor
+# neovim as default editor
 set -gx EDITOR nvim
 
 # NodeJS

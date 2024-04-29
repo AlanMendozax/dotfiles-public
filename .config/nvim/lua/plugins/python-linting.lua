@@ -1,4 +1,4 @@
--- General purpose linters
+-- General purpose linters:
 return {
   -- https://github.com/mfussenegger/nvim-lint
   'mfussenegger/nvim-lint',
@@ -8,13 +8,13 @@ return {
     -- Additional linters can be found here: https://github.com/mfussenegger/nvim-lint#available-linters
     require('lint').linters_by_ft = {
       python = {
-        -- Uncomment whichever linters you prefer
+        -- Add whichever linters you prefer.
         'mypy',
         'ruff',
       }
     }
 
-    -- Automatically run linters after saving.  Use "InsertLeave" for more aggressive linting.
+    -- If you want automatically run linters after saving. Use "BufWritePost" for less aggressive linting.
     vim.api.nvim_create_autocmd({ "InsertLeave" }, {
       -- Only run linter for the following extensions. Remove this to always run.
       pattern = { "*.py", },
