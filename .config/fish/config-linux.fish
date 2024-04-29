@@ -1,3 +1,5 @@
+# You can enable this lines if you're really using a Linux distro:
+
 #set -gx TERM xterm-256color
 
 # theme
@@ -7,10 +9,9 @@
 #set -g theme_hide_hostname no
 #set -g theme_hostname always
 
-# Si de verdad estas utilizando alguna distro de linux puedes habilitar las siguientes lineas:
-# set -gx PATH bin $PATH
-# set -gx PATH ~/bin $PATH
-# set -gx PATH ~/.local/bin $PATH
+#set -gx PATH bin $PATH
+#set -gx PATH ~/bin $PATH
+#set -gx PATH ~/.local/bin $PATH
 
 # eza
 if type -q eza
