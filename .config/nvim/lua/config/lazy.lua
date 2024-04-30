@@ -9,15 +9,25 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = {
+        colorscheme = "catppuccin-mocha",
+        news = {
+          lazyvim = true,
+          neovim = true,
+        },
+      },
+    },
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.linting.eslint" },
-		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
-		{ import = "lazyvim.plugins.extras.lang.tailwind" },
+    { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     --{ import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
@@ -32,13 +42,15 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  dev = {
+    path = "~/.ghq/github.com",
+  },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     cache = {
-			enabled = true,
-			-- disable_events = {},
-		},
+      enabled = true,
+      -- disable_events = {},
+    },
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
@@ -54,11 +66,11 @@ require("lazy").setup({
     },
   },
   ui = {
-		custom_keys = {
-			["<localleader>d"] = function(plugin)
-				dd(plugin)
-			end,
-		},
-	},
-	debug = false,
+    custom_keys = {
+      ["<localleader>d"] = function(plugin)
+        dd(plugin)
+      end,
+    },
+  },
+  debug = false,
 })

@@ -81,9 +81,6 @@ return {
             },
           },
         },
-        rust_analyzer = {
-          mason = false,
-        },
         pyright = {},
         lua_ls = {
           mason = false,
