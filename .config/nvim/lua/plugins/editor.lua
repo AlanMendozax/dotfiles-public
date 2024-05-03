@@ -14,11 +14,6 @@ return {
   },
 
   {
-    "echasnovski/mini.hipatterns",
-    event = "BufReadPre",
-  },
-
-  {
     "dinhhuy258/git.nvim",
     event = "BufReadPre",
     opts = {

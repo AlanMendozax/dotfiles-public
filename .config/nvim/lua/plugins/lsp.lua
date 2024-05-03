@@ -18,6 +18,18 @@ return {
     end,
   },
 
+  config = function()
+    local mason = require("mason")
+    mason.setup({
+      ui = {
+        icons = {
+          package_installed = "",
+          package_uninstalled = "󰚌",
+        },
+      },
+    })
+  end,
+
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
