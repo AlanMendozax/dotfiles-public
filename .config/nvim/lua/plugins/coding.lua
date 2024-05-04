@@ -89,10 +89,57 @@ return {
   },
 
   {
-    "nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-calc",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-path",
+      "f3fora/cmp-spell",
+    },
   },
+
+  config = function()
+    local cmp = require("cmp")
+    local lspkind = require("lspkind")
+
+    cmp.setup({
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "path" },
+        { name = "nvim_lua" },
+        { name = "calc" },
+        { name = "emoji" },
+        { name = "spell", keyword_length = 4 },
+      },
+      window = {
+        completion = cmp.config.window.bordered({
+          col_offset = -3,
+          side_padding = 0,
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        }),
+        documentation = cmp.config.window.bordered({
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        }),
+      },
+      formatting = {
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+          local kind = lspkind.cmp_format({
+            mode = "symbol_text",
+            maxwidth = 50,
+          })(entry, vim_item)
+          local strings = vim.split(kind.kind, "%s", { trimempty = true })
+          kind.kind = " " .. (strings[1] or "") .. " "
+          kind.menu = "    (" .. strings[2] .. ")"
+
+          return kind
+        end,
+      },
+      view = {
+        entries = { name = "custom", selection_order = "near_cursor" },
+      },
+    })
+  end,
 }
