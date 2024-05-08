@@ -33,6 +33,10 @@ return {
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    dependencies = {
+      { "folke/neodev.nvim" },
+    },
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = {

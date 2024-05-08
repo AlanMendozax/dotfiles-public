@@ -7,7 +7,7 @@ return {
     integrations = {
       aerial = true,
       alpha = true,
-      cmp = true,
+      cmp = { enabled = true, border = true },
       dashboard = true,
       flash = true,
       gitsigns = true,
@@ -16,7 +16,7 @@ return {
       indent_blankline = { enabled = true },
       leap = true,
       lsp_trouble = true,
-      mason = true,
+      mason = { enabled = true, border = true },
       markdown = true,
       mini = true,
       native_lsp = {
