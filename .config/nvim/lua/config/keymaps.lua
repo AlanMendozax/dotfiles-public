@@ -4,16 +4,25 @@
 
 local keymap = vim.keymap
 
+-- Window navigation
+keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<cr>")
+keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<cr>")
+keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<cr>")
+keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<cr>")
+
+-- Add a breakpoint for debugging
 keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
 
-keymap.set("n", '<leader>tc', function()
-  if vim.bo.filetype == 'python' then
-    require('dap-python').test_class();
+-- Create a test class
+keymap.set("n", "<leader>tc", function()
+  if vim.bo.filetype == "python" then
+    require("dap-python").test_class()
   end
 end)
 
-keymap.set("n", '<leader>tm', function()
-  if vim.bo.filetype == 'python' then
-    require('dap-python').test_method();
+--create a test method
+keymap.set("n", "<leader>tm", function()
+  if vim.bo.filetype == "python" then
+    require("dap-python").test_method()
   end
 end)

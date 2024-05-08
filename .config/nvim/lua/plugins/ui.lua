@@ -137,6 +137,8 @@ return {
         icons_enabled = true,
         theme = "catppuccin-macchiato",
         component_separators = "",
+        section_separators = { left = "", right = "" },
+        --section_separators = { left = "", right = "" },
       },
     },
   },

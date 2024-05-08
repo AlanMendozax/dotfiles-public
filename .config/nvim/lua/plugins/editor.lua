@@ -188,4 +188,8 @@ return {
       require("telescope").load_extension("file_browser")
     end,
   },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
 }
