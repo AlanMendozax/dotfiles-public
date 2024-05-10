@@ -1,36 +1,44 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  -- bootstrap lazy.nvim
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
+    -- add LazyVim and import its plugins
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        colorscheme = "catppuccin-mocha",
+        colorscheme = "solarized-osaka",
         news = {
           lazyvim = true,
           neovim = true,
         },
       },
     },
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
+    -- { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
+    -- { import = "lazyvim.plugins.extras.dap.core" },
+    -- { import = "lazyvim.plugins.extras.vscode" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-    --{ import = "lazyvim.plugins.extras.ui.mini-animate" },
-    -- import/override with your plugins
+    -- { import = "lazyvim.plugins.extras.test.core" },
+    -- { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- { import = "lazyvim.plugins.extras.editor.mini-files" },
+    -- { import = "lazyvim.plugins.extras.util.project" },
     { import = "plugins" },
   },
   defaults = {
@@ -58,6 +66,7 @@ require("lazy").setup({
         -- "matchit",
         -- "matchparen",
         "netrwPlugin",
+        "rplugin",
         "tarPlugin",
         "tohtml",
         "tutor",
