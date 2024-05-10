@@ -3,6 +3,13 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
+      opts.ui = {
+        icons = {
+          package_installed = " ",
+          package_uninstalled = "󰚌 ",
+        },
+        border = "rounded",
+      }
       vim.list_extend(opts.ensure_installed, {
         "luacheck",
         "shellcheck",
@@ -18,18 +25,6 @@ return {
     end,
   },
 
-  config = function()
-    local mason = require("mason")
-    mason.setup({
-      ui = {
-        icons = {
-          package_installed = "",
-          package_uninstalled = "󰚌",
-        },
-      },
-    })
-  end,
-
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
@@ -38,6 +33,7 @@ return {
       { "folke/neodev.nvim" },
     },
     init = function()
+      require("lspconfig.ui.windows").default_options.border = "rounded"
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = {
         "gd",

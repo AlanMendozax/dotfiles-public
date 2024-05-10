@@ -130,6 +130,8 @@ return {
       local custom_osaka = require("lualine.themes.solarized-osaka")
       custom_osaka.normal.c.bg = "#00141a"
       opts.options.theme = custom_osaka
+      opts.options.section_separators = { left = "", right = "" }
+      opts.sections.lualine_z = { "encoding" }
     end,
   },
 }
