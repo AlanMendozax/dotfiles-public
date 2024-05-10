@@ -122,4 +122,14 @@ return {
       opts.config.header = vim.split(logo, "\n")
     end,
   },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = function(_, opts)
+      local custom_osaka = require("lualine.themes.solarized-osaka")
+      custom_osaka.normal.c.bg = "#00141a"
+      opts.options.theme = custom_osaka
+    end,
+  },
 }
