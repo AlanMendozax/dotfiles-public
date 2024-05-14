@@ -11,6 +11,9 @@ data
 .cargo
 .ghq
 .local/
+.config/gh/
+.config/create-next-app-nodejs/
+.config/nextjs-nodejs/
 .npm
 .npmrc
 .ssh/
@@ -52,3 +55,4 @@ storage/
 node_modules
 package.json
 package-lock.json
+yarn.lock

@@ -60,6 +60,11 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
           single_file_support = false,
+          init_options = {
+            preferences = {
+              disableSuggestions = true,
+            },
+          },
           settings = {
             typescript = {
               inlayHints = {
