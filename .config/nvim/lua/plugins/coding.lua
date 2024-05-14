@@ -126,9 +126,15 @@ return {
             mode = "symbol_text",
             maxwidth = 50,
           })(entry, vim_item)
+          local custom_menu_icon = {
+            calc = " 󰃬 ",
+          }
+          if entry.source.name == "calc" then
+            vim_item.kind = custom_menu_icon.calc
+          end
           local strings = vim.split(kind.kind, "%s", { trimempty = true })
           kind.kind = " " .. (strings[1] or "") .. " "
-          kind.menu = "    (" .. strings[2] .. ")"
+          kind.menu = "    (" .. (strings[2] or "") .. ") "
 
           return kind
         end,
