@@ -18,6 +18,7 @@ data
 .npmrc
 .ssh/
 .termux/
+!.termux/colors.properties
 .tmux/
 .wget-hsts
 .config/yarn/

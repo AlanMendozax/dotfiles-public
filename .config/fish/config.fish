@@ -3,6 +3,7 @@ if status is-interactive
 end
 
 set fish_greeting ""
+set -x TERM xterm-256color
 
 # aliases
 alias ls "ls -p -G"
