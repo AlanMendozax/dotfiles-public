@@ -116,7 +116,7 @@ return {
           side_padding = 0,
         },
         documentation = require("cmp").config.window.bordered({
-          winhighlight = "Normal:FloatBorder,FloatBorder:FloatBorder,Search:None",
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
         }),
       }
       opts.formatting = {
@@ -150,7 +150,7 @@ return {
             TypeParameter = "󰅲",
           }
           local kind = require("lspkind").cmp_format({
-            symbol_map = kind_icons,
+            --symbol_map = kind_icons,
             mode = "symbol_text",
             maxwidth = 50,
           })(entry, vim_item)

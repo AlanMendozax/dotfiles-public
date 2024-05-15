@@ -5,8 +5,8 @@ return {
     priority = 1000,
     opts = function(_, opts)
       opts.transparent = true
-      --local c = require("solarized-osaka.colors")
       opts.on_highlights = function(hl, c)
+        hl.Normal = { bg = "#00141a" }
         hl.CmpItemKindSnippet = { fg = c.base, bg = c.violet }
         hl.CmpItemKindKeyword = { fg = c.base, bg = c.red }
         hl.CmpItemKindText = { fg = c.base, bg = c.cyan }
