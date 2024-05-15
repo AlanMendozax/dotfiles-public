@@ -115,9 +115,9 @@ return {
           col_offset = -3,
           side_padding = 0,
         },
-        documentation = {
-          border = "rounded",
-        },
+        documentation = require("cmp").config.window.bordered({
+          winhighlight = "Normal:FloatBorder,FloatBorder:FloatBorder,Search:None",
+        }),
       }
       opts.formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -134,7 +134,7 @@ return {
           end
           local strings = vim.split(kind.kind, "%s", { trimempty = true })
           kind.kind = " " .. (strings[1] or "") .. " "
-          kind.menu = "    (" .. (strings[2] or "") .. ") "
+          kind.menu = "(" .. (strings[2] or "") .. ")"
 
           return kind
         end,
