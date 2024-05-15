@@ -122,12 +122,40 @@ return {
       opts.formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
+          local kind_icons = {
+            Text = " ",
+            Method = "󰆧  ",
+            Function = "󰊕",
+            Constructor = " ",
+            Field = "󰇽 ",
+            Variable = "󰂡",
+            Class = "󰠱 ",
+            Interface = "  ",
+            Module = "  ",
+            Property = "󰜢 ",
+            Unit = " ",
+            Value = "󰎠 ",
+            Enum = " ",
+            Keyword = "󰌋 ",
+            Snippet = " ",
+            Color = "󰏘 ",
+            File = "󰈙 ",
+            Reference = " ",
+            Folder = "󰉋 ",
+            EnumMember = " ",
+            Constant = "󰏿",
+            Struct = "  ",
+            Event = " ",
+            Operator = "󰆕 ",
+            TypeParameter = "󰅲",
+          }
           local kind = require("lspkind").cmp_format({
+            symbol_map = kind_icons,
             mode = "symbol_text",
             maxwidth = 50,
           })(entry, vim_item)
           local custom_menu_icon = {
-            calc = " 󰃬 ",
+            calc = "󰃬",
           }
           if entry.source.name == "calc" then
             vim_item.kind = custom_menu_icon.calc
