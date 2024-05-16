@@ -3,8 +3,8 @@ return {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
+    transparent = true,
     opts = function(_, opts)
-      opts.transparent = true
       opts.on_highlights = function(hl, c)
         hl.Normal = { bg = "#00141a" }
         --hl.DiagnosticVirtualTextWarn = { fg = c.yellow, bg = "#00141a" }
