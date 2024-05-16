@@ -7,6 +7,10 @@ return {
       opts.transparent = true
       opts.on_highlights = function(hl, c)
         hl.Normal = { bg = "#00141a" }
+        --hl.DiagnosticVirtualTextWarn = { fg = c.yellow, bg = "#00141a" }
+        --hl.DiagnosticVirtualTextWarn = { fg = c.yellow, bg = "#002b36" }
+        --hl.DiagnosticVirtualTextError = { fg = c.red, bg = "#00141a" }
+        --hl.DiagnosticVirtualTextHint = { fg = c.cyan, bg = "#00141a" }
         hl.CmpItemKindSnippet = { fg = c.base, bg = c.violet }
         hl.CmpItemKindKeyword = { fg = c.base, bg = c.red }
         hl.CmpItemKindText = { fg = c.base, bg = c.cyan }
@@ -15,7 +19,7 @@ return {
         hl.CmpItemKindFunction = { fg = c.base, bg = c.blue }
         hl.CmpItemKindFolder = { fg = c.base, bg = c.blue }
         hl.CmpItemKindModule = { fg = c.base, bg = c.blue }
-        hl.CmpItemKindConstant = { fg = c.base, bg = c.yellow }
+        hl.CmpItemKindConstant = { fg = c.base, bg = c.orange }
         hl.CmpItemKindField = { fg = c.base, bg = c.green }
         hl.CmpItemKindProperty = { fg = c.base, bg = c.green }
         hl.CmpItemKindEnum = { fg = c.base, bg = c.green }
@@ -28,7 +32,7 @@ return {
         hl.CmpItemKindReference = { fg = c.base, bg = c.red }
         hl.CmpItemKindEnumMember = { fg = c.base, bg = c.red }
         hl.CmpItemKindStruct = { fg = c.base, bg = c.blue }
-        hl.CmpItemKindValue = { fg = c.base, bg = c.yellow }
+        hl.CmpItemKindValue = { fg = c.base, bg = c.orange }
         hl.CmpItemKindEvent = { fg = c.base, bg = c.blue }
         hl.CmpItemKindOperator = { fg = c.base, bg = c.blue }
         hl.CmpItemKindTypeParameter = { fg = c.base, bg = c.blue }
