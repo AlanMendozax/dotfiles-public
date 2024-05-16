@@ -7,8 +7,6 @@ return {
     -- Define a table of linters for each filetype (not extension).
     -- Additional linters can be found here: https://github.com/mfussenegger/nvim-lint#available-linters
     require("lint").linters_by_ft = {
-      javascript = { "eslint" },
-      typescript = { "eslint" },
       python = {
         -- Add whichever linters you prefer.
         "mypy",

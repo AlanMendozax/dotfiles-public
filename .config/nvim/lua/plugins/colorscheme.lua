@@ -3,14 +3,13 @@ return {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
-    transparent = true,
-    opts = function(_, opts)
-      opts.on_highlights = function(hl, c)
+    opts = {
+      transparent = true,
+      on_highlights = function(hl, c)
         hl.Normal = { bg = "#00141a" }
-        --hl.DiagnosticVirtualTextWarn = { fg = c.yellow, bg = "#00141a" }
-        --hl.DiagnosticVirtualTextWarn = { fg = c.yellow, bg = "#002b36" }
-        --hl.DiagnosticVirtualTextError = { fg = c.red, bg = "#00141a" }
-        --hl.DiagnosticVirtualTextHint = { fg = c.cyan, bg = "#00141a" }
+        hl.DiagnosticVirtualTextWarn = { fg = c.yellow }
+        hl.DiagnosticVirtualTextError = { fg = c.red }
+        hl.DiagnosticVirtualTextHint = { fg = c.cyan }
         hl.CmpItemKindSnippet = { fg = c.base, bg = c.violet }
         hl.CmpItemKindKeyword = { fg = c.base, bg = c.red }
         hl.CmpItemKindText = { fg = c.base, bg = c.cyan }
@@ -37,7 +36,7 @@ return {
         hl.CmpItemKindOperator = { fg = c.base, bg = c.blue }
         hl.CmpItemKindTypeParameter = { fg = c.base, bg = c.blue }
         hl.CmpItemKindCopilot = { fg = c.base, bg = c.cyan }
-      end
-    end,
+      end,
+    },
   },
 }

@@ -118,6 +118,11 @@ return {
         { name = "emoji" },
         { name = "spell", keyword_length = 4 },
       }
+      opts.snippet = {
+        expand = function(args)
+          require("luasnip").lsp_expand(args.body)
+        end,
+      }
       opts.window = {
         completion = {
           winhighlight = "Normal:Pmenu,Search:None",

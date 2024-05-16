@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- If you want automatically run linters after saving. Use "BufWritePost" for less aggressive linting.
 vim.api.nvim_create_autocmd("InsertLeave", {
   -- Only run linter for the following extensions. Remove this to always run.
-  --pattern = "*.py",
+  pattern = "*.py",
   callback = function()
     require("lint").try_lint()
   end,

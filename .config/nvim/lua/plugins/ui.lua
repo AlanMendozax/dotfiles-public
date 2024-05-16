@@ -3,6 +3,7 @@ return {
   -- messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
+    event = "VeryLazy",
     opts = function(_, opts)
       table.insert(opts.routes, {
         filter = {

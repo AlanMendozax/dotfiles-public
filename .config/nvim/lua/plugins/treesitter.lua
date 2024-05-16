@@ -16,11 +16,13 @@ return {
         "http",
         "java",
         "php",
-        "python",
         "rust",
         "scss",
         "sql",
         "svelte",
+        "python",
+        "html",
+        "javascript",
       },
 
       -- matchup = {
