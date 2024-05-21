@@ -20,6 +20,7 @@ data
 .termux/
 !.termux/colors.properties
 .tmux/
+.luarocks
 .wget-hsts
 .config/yarn/
 .yarnrc
