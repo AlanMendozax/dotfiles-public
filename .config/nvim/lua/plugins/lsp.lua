@@ -8,7 +8,7 @@ return {
           package_installed = " ",
           package_uninstalled = "󰚌 ",
         },
-        border = "rounded",
+        --border = "rounded",
       }
       vim.list_extend(opts.ensure_installed, {
         "luacheck",

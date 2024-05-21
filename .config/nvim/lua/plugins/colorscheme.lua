@@ -6,10 +6,11 @@ return {
     opts = {
       transparent = true,
       on_highlights = function(hl, c)
-        hl.Normal = { bg = "#00141a" }
+        --hl.Normal = { bg = "#00141a" }
         hl.DiagnosticVirtualTextWarn = { fg = c.yellow }
         hl.DiagnosticVirtualTextError = { fg = c.red }
         hl.DiagnosticVirtualTextHint = { fg = c.cyan }
+        hl.DiagnosticVirtualTextInfo = { fg = c.blue }
         hl.CmpItemKindSnippet = { fg = c.base, bg = c.violet }
         hl.CmpItemKindKeyword = { fg = c.base, bg = c.red }
         hl.CmpItemKindText = { fg = c.base, bg = c.cyan }
