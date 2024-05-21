@@ -6,7 +6,7 @@ return {
     opts = {
       transparent = true,
       on_highlights = function(hl, c)
-        --hl.Normal = { bg = "#00141a" }
+        hl.Normal = { bg = "#00141a" }
         hl.DiagnosticVirtualTextWarn = { fg = c.yellow }
         hl.DiagnosticVirtualTextError = { fg = c.red }
         hl.DiagnosticVirtualTextHint = { fg = c.cyan }
