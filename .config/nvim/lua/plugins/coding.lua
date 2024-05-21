@@ -153,6 +153,9 @@ return {
           return kind
         end,
       }
+      opts.view = {
+        entries = { name = "custom", selection_order = "near_cursor" },
+      }
     end,
   },
 }

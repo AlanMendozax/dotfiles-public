@@ -36,7 +36,6 @@ return {
         hl.CmpItemKindEvent = { fg = c.base, bg = c.blue }
         hl.CmpItemKindOperator = { fg = c.base, bg = c.blue }
         hl.CmpItemKindTypeParameter = { fg = c.base, bg = c.blue }
-        hl.CmpItemKindCopilot = { fg = c.base, bg = c.cyan }
       end,
     },
   },
