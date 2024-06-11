@@ -24,6 +24,9 @@ set -gx PATH node_modules/.bin $PATH
 set -g GOPATH $HOME/go
 set -gx PATH $GOPATH/bin $PATH
 
+# Rust
+set -gx PATH .cargo/bin $PATH
+
 # Enviroment variables for python packages
 #set -x LDFLAGS "-lm -lcompiler_rt"
 #set -x LDFLAGS "-lpython3.11"
