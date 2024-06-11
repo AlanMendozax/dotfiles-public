@@ -24,6 +24,15 @@ set -gx PATH node_modules/.bin $PATH
 set -g GOPATH $HOME/go
 set -gx PATH $GOPATH/bin $PATH
 
+# Enviroment variables for python packages
+#set -x LDFLAGS "-lm -lcompiler_rt"
+#set -x LDFLAGS "-lpython3.11"
+#set -x CFLAGS "-Wno-deprecated-declarations -Wno-unreachable-code -Wno-int-conversion"
+#set -x CFLAGS "$CFLAGS -U__ANDROID_API__ -D__ANDROID_API__=31"
+#set -x CFLAGS "-U__ANDROID_API__ -D__ANDROID_API__=31"
+#set -x MATHLIB m
+#set -x LD_PRELOAD "$LD_PRELOAD:/data/data/com.termux/files/usr/lib/libpython3.11.so.1.0"
+
 switch (uname)
     case Darwin
         source (dirname (status --current-filename))/config-osx.fish
