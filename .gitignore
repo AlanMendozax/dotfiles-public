@@ -38,7 +38,9 @@ storage/
 .config/nvim/node_modules
 .config/nvim/package-lock.json
 .config/nvim/package.json
+.config/nvim/selene.toml
 .config/nvim/stylua.toml
+.config/nvim/vim.toml
 .config/nvim/README.md
 .config/nvim/lua/plugins/example.lua
 !.config/nvim/lua/plugins/lsp.lua
