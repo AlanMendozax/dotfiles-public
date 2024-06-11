@@ -29,9 +29,10 @@ set -gx PATH $GOPATH/bin $PATH
 #set -x LDFLAGS "-lpython3.11"
 #set -x CFLAGS "-Wno-deprecated-declarations -Wno-unreachable-code -Wno-int-conversion"
 #set -x CFLAGS "$CFLAGS -U__ANDROID_API__ -D__ANDROID_API__=31"
-#set -x CFLAGS "-U__ANDROID_API__ -D__ANDROID_API__=31"
-#set -x MATHLIB m
+#set -x CFLAGS "$CFLAGS -U__ANDROID_API__ -D__ANDROID_API__=34"
+set -x MATHLIB m
 #set -x LD_PRELOAD "$LD_PRELOAD:/data/data/com.termux/files/usr/lib/libpython3.11.so.1.0"
+set -x KERAS_BACKEND tensorflow
 
 switch (uname)
     case Darwin
