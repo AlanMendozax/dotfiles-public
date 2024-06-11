@@ -6,6 +6,7 @@ debug
 foo.*
 *.log
 data
+.bundle
 .bash_history
 .cache/
 .cargo
