@@ -17,6 +17,7 @@ data
 .config/nextjs-nodejs/
 .npm
 .npmrc
+hello_app
 .ssh/
 .termux/
 !.termux/colors.properties
