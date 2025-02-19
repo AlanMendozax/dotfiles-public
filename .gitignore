@@ -1,0 +1,14 @@
+*.o
+\#*#
+*#
+.#*
+.*~
+*~
+*.log
+.*
+!.gitignore
+!.gitconfig
+!.config/fish/config.fish
+!.config/nvim/init.lua
+!.config/nvim/lua
+!.config/tmux/tmux.conf
