@@ -1,5 +1,5 @@
 [github]
-	user = AlanMendozax
+  user = AlanMendozax
 [alias]
   d = diff
   co = checkout

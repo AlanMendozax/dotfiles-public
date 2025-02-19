@@ -99,9 +99,8 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = function(_, opts)
-      local custom_tokyo = require("lualine.themes.tokyonight-night")
-      custom_tokyo.normal.c.bg = "#000000"
-      opts.options.theme = custom_tokyo
+      local colorscheme = require("plugins.colorscheme")
+      opts.options.theme = colorscheme.get_lualine_theme()
       opts.sections.lualine_z = { "encoding" }
     end,
   },
