@@ -7,66 +7,42 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 local function set_tmux_status(position)
-  local handle = io.popen(string.format("tmux set-option -g status-position %s", position))
-  if handle then
-    handle:close()
-  end
+  local handle = io.popen("tmux set-option -g status-position " .. position)
+  if handle then handle:close() end
 end
 
--- Cambiar barra de estado al abrir Neovim
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    set_tmux_status("top")
-  end,
-})
+local autocmds = {
+  -- Cambiar barra de estado al abrir/cerrar Neovim
+  { event = "VimEnter", callback = function() set_tmux_status("top") end },
+  { event = "VimLeave", callback = function() set_tmux_status("bottom") end },
 
--- Cambiar barra de estado al salir de Neovim
-vim.api.nvim_create_autocmd("VimLeave", {
-  callback = function()
-    set_tmux_status("bottom")
-  end,
-})
+  -- Cambios según el tipo de archivo
+  { event = "FileType", pattern = "fzf", callback = function() set_tmux_status("top") end },
+  { event = "FileType", pattern = "snacks_dashboard", callback = function() set_tmux_status("bottom") end },
 
--- Cuando se entra a fzf, mover tmux al top
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "fzf",
-  callback = function()
-    set_tmux_status("top")
-  end,
-})
-
--- Cuando se entra al dashboard, mover tmux al bottom
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "snacks_dashboard",
-  callback = function()
-    set_tmux_status("bottom")
-  end,
-})
-
--- Cuando se sale de fzf y regresa al dashboard, mover tmux al bottom
-vim.api.nvim_create_autocmd("BufWinLeave", {
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype == "fzf" then
-      set_tmux_status("bottom")
+  -- Restaurar barra de estado al salir de fzf y regresar al dashboard
+  { event = "BufWinLeave", pattern = "*", callback = function()
+      if vim.bo.filetype == "fzf" then set_tmux_status("bottom") end
     end
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufLeave", {
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype == "snacks_dashboard" then
-      set_tmux_status("top")
+  },
+  
+  -- Control al entrar/salir del dashboard
+  { event = "BufLeave", pattern = "*", callback = function()
+      if vim.bo.filetype == "snacks_dashboard" then set_tmux_status("top") end
     end
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype == "snacks_dashboard" then
-      set_tmux_status("bottom")
+  },
+  { event = "BufEnter", pattern = "*", callback = function()
+      if vim.bo.filetype == "snacks_dashboard" then set_tmux_status("bottom") end
     end
-  end,
-})
+  }
+}
+
+-- Registrar todos los autocmds en un grupo
+local group = vim.api.nvim_create_augroup("TmuxStatus", { clear = true })
+for _, cmd in ipairs(autocmds) do
+  vim.api.nvim_create_autocmd(cmd.event, {
+    group = group,
+    pattern = cmd.pattern,
+    callback = cmd.callback,
+  })
+end
