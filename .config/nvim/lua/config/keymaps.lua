@@ -20,12 +20,6 @@ keymap.set({ "n", "v" }, "<leader>mp", function()
   })
 end, { desc = "Format file or range (in visual mode)" })
 
--- Window navigation
-keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<cr>")
-keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<cr>")
-keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<cr>")
-keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<cr>")
-
 -- Diff keymaps
 keymap.set("n", "<leader>cc", ":diffput<CR>") -- Put diff from current to other during diff
 keymap.set("n", "<leader>cj", ":diffget 1<CR>") -- Get diff from left (local) during merge
