@@ -27,28 +27,24 @@ keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<cr>")
 keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<cr>")
 
 -- Diff keymaps
-keymap.set("n", "<leader>cc", ":diffput<CR>") -- put diff from current to other during diff
-keymap.set("n", "<leader>cj", ":diffget 1<CR>") -- get diff from left (local) during merge
-keymap.set("n", "<leader>ck", ":diffget 3<CR>") -- get diff from right (remote) during merge
-keymap.set("n", "<leader>cn", "]c") -- next diff hunk
-keymap.set("n", "<leader>cp", "[c") -- previous diff hunk
+keymap.set("n", "<leader>cc", ":diffput<CR>") -- Put diff from current to other during diff
+keymap.set("n", "<leader>cj", ":diffget 1<CR>") -- Get diff from left (local) during merge
+keymap.set("n", "<leader>ck", ":diffget 3<CR>") -- Get diff from right (remote) during merge
+keymap.set("n", "<leader>cn", "]c") -- Next diff hunk
+keymap.set("n", "<leader>cp", "[c") -- Previous diff hunk
 
 -- Quickfix keymaps
-keymap.set("n", "<leader>qo", ":copen<CR>") -- open quickfix list
-keymap.set("n", "<leader>qf", ":cfirst<CR>") -- jump to first quickfix list item
-keymap.set("n", "<leader>qn", ":cnext<CR>") -- jump to next quickfix list item
-keymap.set("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
-keymap.set("n", "<leader>ql", ":clast<CR>") -- jump to last quickfix list item
-keymap.set("n", "<leader>qc", ":cclose<CR>") -- close quickfix list
+keymap.set("n", "<leader>qo", ":copen<CR>") -- Open quickfix list
+keymap.set("n", "<leader>qf", ":cfirst<CR>") -- Jump to first quickfix list item
+keymap.set("n", "<leader>qn", ":cnext<CR>") -- Jump to next quickfix list item
+keymap.set("n", "<leader>qp", ":cprev<CR>") -- Jump to prev quickfix list item
+keymap.set("n", "<leader>ql", ":clast<CR>") -- Jump to last quickfix list item
+keymap.set("n", "<leader>qc", ":cclose<CR>") -- Close quickfix list
 
--- Add a breakpoint for debugging
-keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
-
--- Add a breakpoint condition for debugging
-keymap.set("n", "<leader>bc", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
-
--- Run or continue the debugger
-keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
+-- Debugging
+keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>") -- Add a breakpoint for debugging
+keymap.set("n", "<leader>bc", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>") -- Add a breakpoint with a condition for debugging
+keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>") -- Run or continue the debugger
 
 -- Create a test class for Python
 keymap.set("n", "<leader>ptc", function()
