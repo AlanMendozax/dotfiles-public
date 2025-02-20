@@ -9,9 +9,16 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 -- Refactoring tool
 keymap.set("v","<leader>r", function()
   require("refactoring").select_refactor()
-end,
-{ noremap = true, silent = true, expr = false, desc = "Refactoring" }
-)
+end, { noremap = true, silent = true, expr = false, desc = "Refactoring" })
+
+-- Format code
+keymap.set({ "n", "v" }, "<leader>mp", function()
+  require("conform").format({
+      lsp_fallback = true,
+      async = false,
+      timeout_ms = 1000,
+  })
+end, { desc = "Format file or range (in visual mode)" })
 
 -- Window navigation
 keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<cr>")
