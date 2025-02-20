@@ -6,6 +6,13 @@ local keymap = vim.keymap
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
+-- Refactoring tool
+keymap.set("v","<leader>r", function()
+  require("refactoring").select_refactor()
+end,
+{ noremap = true, silent = true, expr = false, desc = "Refactoring" }
+)
+
 -- Window navigation
 keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<cr>")
 keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<cr>")
