@@ -19,11 +19,13 @@ return {
         "js-debug-adapter",
         "tailwindcss-language-server",
         "typescript-language-server",
+        "prettier",
         "jdtls",
         "java-test",
         "java-debug-adapter",
         "pyright",
         "debugpy",
+        "black",
       })
     end,
   },

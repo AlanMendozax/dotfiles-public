@@ -18,10 +18,3 @@ set -gx EDITOR nvim
 
 # Java
 set -gx JAVA_HOME ../usr/lib/jvm/java-17-openjdk
-set -gx PATH $JAVA_HOME/bin $PATH
-
-# Rust
-set -gx PATH .cargo/bin $PATH
-
-# NodeJS
-set -gx PATH node_modules/.bin $PATH
