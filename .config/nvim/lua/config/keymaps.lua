@@ -7,18 +7,21 @@ local keymap = vim.keymap
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Refactoring tool
-keymap.set("v","<leader>r", function()
-  require("refactoring").select_refactor()
+keymap.set("v", "<leader>r", function()
+	require("refactoring").select_refactor()
 end, { noremap = true, silent = true, expr = false, desc = "Refactoring" })
 
 -- Format code
 keymap.set({ "n", "v" }, "<leader>mp", function()
-  require("conform").format({
-      lsp_fallback = true,
-      async = false,
-      timeout_ms = 1000,
-  })
+	require("conform").format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 1000,
+	})
 end, { desc = "Format file or range (in visual mode)" })
+
+-- Zen mode
+keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
 -- Diff keymaps
 keymap.set("n", "<leader>cc", ":diffput<CR>") -- Put diff from current to other during diff
@@ -42,42 +45,42 @@ keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>") -- Run or 
 
 -- Create a test class for Python
 keymap.set("n", "<leader>ptc", function()
-  if vim.bo.filetype == "python" then
-    require("dap-python").test_class()
-  end
+	if vim.bo.filetype == "python" then
+		require("dap-python").test_class()
+	end
 end)
 
 --create a test method for Python
 keymap.set("n", "<leader>ptm", function()
-  if vim.bo.filetype == "python" then
-    require("dap-python").test_method()
-  end
+	if vim.bo.filetype == "python" then
+		require("dap-python").test_method()
+	end
 end)
 
 -- Organize imports for Java
 keymap.set("n", "<leader>jgo", function()
-  if vim.bo.filetype == "java" then
-    require("jdtls").organize_imports()
-  end
+	if vim.bo.filetype == "java" then
+		require("jdtls").organize_imports()
+	end
 end)
 
 -- Update projects config for Java
 keymap.set("n", "<leader>jgu", function()
-  if vim.bo.filetype == "java" then
-    require("jdtls").update_projects_config()
-  end
+	if vim.bo.filetype == "java" then
+		require("jdtls").update_projects_config()
+	end
 end)
 
 -- Create a test class for Java
 keymap.set("n", "<leader>jtc", function()
-  if vim.bo.filetype == "java" then
-    require("jdtls").test_class()
-  end
+	if vim.bo.filetype == "java" then
+		require("jdtls").test_class()
+	end
 end)
 
 -- Create a test method for Java
 keymap.set("n", "<leader>jtm", function()
-  if vim.bo.filetype == "java" then
-    require("jdtls").test_nearest_method()
-  end
+	if vim.bo.filetype == "java" then
+		require("jdtls").test_nearest_method()
+	end
 end)
