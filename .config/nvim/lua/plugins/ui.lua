@@ -10,21 +10,11 @@ return {
 				},
 				opts = { skip = true },
 			})
-			local focused = true
-			vim.api.nvim_create_autocmd("FocusGained", {
-				callback = function()
-					focused = true
-				end,
-			})
-			vim.api.nvim_create_autocmd("FocusLost", {
-				callback = function()
-					focused = false
-				end,
-			})
+
 			table.insert(opts.routes, 1, {
 				filter = {
 					cond = function()
-						return not focused
+						return not vim.g.ui_focused
 					end,
 				},
 				view = "notify_send",
@@ -55,7 +45,6 @@ return {
 		opts = {
 			options = {
 				mode = "tabs",
-				--separator_style = "slant",
 				show_buffer_close_icons = false,
 				show_close_icon = false,
 			},
