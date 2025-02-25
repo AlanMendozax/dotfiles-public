@@ -23,6 +23,9 @@ end, { desc = "Format file or range (in visual mode)" })
 -- Zen mode
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
+-- Codesnap
+keymap.set("x", "<leader>cs", "<cmd>CodeSnap<cr>", { desc = "Save selected" })
+
 -- BUfferline tabs
 keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
 keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
