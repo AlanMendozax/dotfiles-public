@@ -23,6 +23,10 @@ end, { desc = "Format file or range (in visual mode)" })
 -- Zen mode
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
+-- BUfferline tabs
+keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
+keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
+
 -- Diff keymaps
 keymap.set("n", "<leader>cc", ":diffput<CR>") -- Put diff from current to other during diff
 keymap.set("n", "<leader>cj", ":diffget 1<CR>") -- Get diff from left (local) during merge
