@@ -68,6 +68,7 @@ return {
 					},
 				},
 				lua_ls = {
+          mason = false,
 					-- enabled = false,
 					single_file_support = true,
 					settings = {
