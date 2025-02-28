@@ -1,7 +1,4 @@
-if type -q eza
-  alias ll "eza -l -g --icons"
-  alias lla "ll -a"
-end
+set -gx TERM xterm-256-color
 
 # Inkdrop
 set -gx INKDROP_HOME ~/.inkdrop
