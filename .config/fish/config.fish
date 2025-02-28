@@ -1,11 +1,7 @@
 set fish_greeting ""
 
 # theme
-#set -g theme_color_scheme terminal-dark
-#set -g fish_prompt_pwd_dir_length 1
-#set -g theme_display_user yes
-#set -g theme_hide_hostname no
-#set -g theme_hostname always
+set -g theme_color_scheme terminal-dark
 
 # aliases
 alias ls "ls -p -G"
@@ -17,16 +13,24 @@ command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim
 
-#set -gx PATH bin $PATH
-#set -gx PATH ~/bin $PATH
-#set -gx PATH ~/.local/bin $PATH
+# XDG locations
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+set -gx XDG_CACHE_HOME $HOME/.cache
 
-# NodeJS
-set -gx PATH node_modules/.bin $PATH
+# Java
+set -g JAVA_HOME ../usr/lib/jvm/java-17-openjdk
 
 # Go
 set -g GOPATH $HOME/go
-set -gx PATH $GOPATH/bin $PATH
+
+# This code checks if TMUX is not active, and if so,
+# It adds directories to the PATH, ensuring they are available in the terminal
+# Avoiding duplicates in PATH.
+if not set -q TMUX
+    set -x PATH $PATH $GOPATH/bin $JAVA_HOME/bin node_modules/.bin
+end
 
 # Eza
 if type -q eza
@@ -51,3 +55,4 @@ set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
 end
+
