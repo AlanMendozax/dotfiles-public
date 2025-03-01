@@ -1,5 +1,5 @@
 return {
-	-- messages, cmdline and the popupmenu
+	-- Messages, cmdline and the popupmenu
 	{
 		"folke/noice.nvim",
 		opts = function(_, opts)
@@ -34,6 +34,7 @@ return {
 		end,
 	},
 
+	-- Notifications
 	{
 		"rcarriga/nvim-notify",
 		opts = {
@@ -41,7 +42,7 @@ return {
 		},
 	},
 
-	-- buffer line
+	-- Buffer line
 	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
@@ -56,7 +57,7 @@ return {
 		},
 	},
 
-	-- statusline
+	-- Statusline
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = function(_, opts)
@@ -76,6 +77,7 @@ return {
 		end,
 	},
 
+	-- Distraction-free work mode
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
@@ -88,11 +90,13 @@ return {
 		},
 	},
 
+	-- Preview markdown files
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		enabled = false,
 	},
 
+	-- User interface
 	{
 		"folke/snacks.nvim",
 		opts = {
