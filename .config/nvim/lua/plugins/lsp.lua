@@ -6,12 +6,14 @@ return {
 			local ui_config = require("plugins.ui")
 			opts.ui = ui_config.ui
 			vim.list_extend(opts.ensure_installed, {
+				"black",
+				"css-lsp",
 				"luacheck",
+				"pyright",
 				"shellcheck",
 				"shfmt",
 				"tailwindcss-language-server",
 				"typescript-language-server",
-				"css-lsp",
 			})
 		end,
 	},
@@ -60,6 +62,7 @@ return {
 					},
 				},
 				html = {},
+				pyright = {},
 				yamlls = {
 					settings = {
 						yaml = {
