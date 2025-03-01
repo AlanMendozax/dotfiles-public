@@ -1,3 +1,7 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+
 local discipline = require("craftzdog.discipline")
 
 discipline.cowboy()
@@ -20,8 +24,12 @@ keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
 
 -- Increment/decrement
-keymap.set("n", "+", "<C-a>")
-keymap.set("n", "-", "<C-x>")
+keymap.set("n", "+", function()
+	return require("dial.map").inc_normal()
+end, { expr = true, desc = "Increment" })
+keymap.set("n", "-", function()
+	return require("dial.map").dec_normal()
+end, { expr = true, desc = "Decrement" })
 
 -- Delete a word backwards
 keymap.set("n", "dw", 'vb"_d')
