@@ -1,4 +1,4 @@
-# Clear fish shell welcome message 
+# Clear fish shell welcome message
 set fish_greeting ""
 
 # Aliases
@@ -31,8 +31,8 @@ end
 
 # Eza
 if type -q eza
-  alias ll "eza -l -G --icons"
-  alias lla "ll -a"
+    alias ll "eza -l -G --icons"
+    alias lla "ll -a"
 end
 
 # Fzf
