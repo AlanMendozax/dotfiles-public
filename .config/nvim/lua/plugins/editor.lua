@@ -1,4 +1,5 @@
 return {
+	-- Visual navigation to a word or position within a file
 	{
 		enabled = false,
 		"folke/flash.nvim",
@@ -13,6 +14,7 @@ return {
 		},
 	},
 
+	-- Highlight text patterns
 	{
 		"echasnovski/mini.hipatterns",
 		event = "BufReadPre",
@@ -35,19 +37,14 @@ return {
 		},
 	},
 
+	-- Interface to interact with Git directly within Neovim
 	{
 		"dinhhuy258/git.nvim",
 		event = "BufReadPre",
-		opts = {
-			keymaps = {
-				-- Open blame window
-				blame = "<Leader>gb",
-				-- Open file/folder in git repository
-				browse = "<Leader>go",
-			},
-		},
+		opts = {},
 	},
 
+	-- Interactive search and filtering in Neovim
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
@@ -211,6 +208,7 @@ return {
 		end,
 	},
 
+	-- Buffer management
 	{
 		"kazhala/close-buffers.nvim",
 		event = "VeryLazy",
@@ -232,6 +230,7 @@ return {
 		},
 	},
 
+	-- Autocomplete plugin
 	{
 		"saghen/blink.cmp",
 		opts = {

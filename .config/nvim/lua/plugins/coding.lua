@@ -1,12 +1,12 @@
 return {
-	-- Incremental rename
+	-- Allows interactive renaming of variables, functions, classes, etc., directly from the command line.
 	{
 		"smjonas/inc-rename.nvim",
 		cmd = "IncRename",
 		config = true,
 	},
 
-	-- Go forward/backward with square brackets
+	-- Go backward/forward between different elements (buffer, diagnostics, etc.) with square brackets
 	{
 		"echasnovski/mini.bracketed",
 		event = "BufReadPost",
@@ -22,7 +22,7 @@ return {
 		end,
 	},
 
-	-- Better increase/descrease
+	-- Increase/decrease numbers and values easily
 	{
 		"monaqa/dial.nvim",
     -- stylua: ignore
