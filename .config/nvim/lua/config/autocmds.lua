@@ -1,3 +1,14 @@
+-- Autocmds are automatically loaded on the VeryLazy event
+-- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+--
+-- Add any additional autocmds here
+-- with `vim.api.nvim_create_autocmd`
+--
+-- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
+-- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+-- Sets the position of the tmux status bar globally.
+-- @param position (string): The desired position for the status bar ("top" or "bottom").
 local function set_tmux_status(position)
 	local handle = io.popen("tmux set-option -g status-position " .. position)
 	if handle then
@@ -5,8 +16,9 @@ local function set_tmux_status(position)
 	end
 end
 
+-- Autocmds to dynamically change the position of the tmux status bar
 local autocmds = {
-	-- Cambiar barra de estado al abrir/cerrar Neovim
+	-- Change the position when opening/closing Neovim
 	{
 		event = "VimEnter",
 		callback = function()
@@ -20,7 +32,7 @@ local autocmds = {
 		end,
 	},
 
-	-- Cambios según el tipo de archivo
+	-- Change the position depending on the file type
 	{
 		event = "FileType",
 		pattern = "fzf",
@@ -36,7 +48,7 @@ local autocmds = {
 		end,
 	},
 
-	-- Restaurar barra de estado al salir de fzf y regresar al dashboard
+	-- Restore the position when exiting fzf and returning to dashboard
 	{
 		event = "BufWinLeave",
 		pattern = "*",
@@ -47,7 +59,7 @@ local autocmds = {
 		end,
 	},
 
-	-- Control al entrar/salir del dashboard
+	-- Control the position when entering/exiting the dashboard
 	{
 		event = "BufLeave",
 		pattern = "*",
@@ -68,7 +80,7 @@ local autocmds = {
 	},
 }
 
--- Registrar todos los autocmds en un grupo
+-- Register all autocmds for tmux status bar position control in a group
 local group = vim.api.nvim_create_augroup("TmuxStatus", { clear = true })
 for _, cmd in ipairs(autocmds) do
 	vim.api.nvim_create_autocmd(cmd.event, {
