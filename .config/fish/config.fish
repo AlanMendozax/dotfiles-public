@@ -49,8 +49,7 @@ switch (uname)
         else
             source (dirname (status --current-filename))/config-linux.fish
         end
-    case '*'
-        source (dirname (status --current-filename))/config-windows.fish
+
 end
 
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
