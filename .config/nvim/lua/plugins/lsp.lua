@@ -3,6 +3,8 @@ return {
 	{
 		"williamboman/mason.nvim",
 		opts = function(_, opts)
+			local ui_config = require("plugins.ui")
+			opts.ui = ui_config.ui
 			vim.list_extend(opts.ensure_installed, {
 				"luacheck",
 				"shellcheck",

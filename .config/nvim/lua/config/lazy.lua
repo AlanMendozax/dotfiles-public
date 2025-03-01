@@ -52,7 +52,7 @@ require("lazy").setup({
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
 	dev = {
-		path = "~/.ghq/github.com",
+		path = "~/ghq/github.com",
 	},
 	checker = { enabled = true }, -- automatically check for plugin updates
 	performance = {
@@ -76,6 +76,7 @@ require("lazy").setup({
 		},
 	},
 	ui = {
+		border = "rounded",
 		custom_keys = {
 			["<localleader>d"] = function(plugin)
 				dd(plugin)

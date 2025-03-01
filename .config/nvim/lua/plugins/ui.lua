@@ -113,4 +113,14 @@ return {
 			},
 		},
 	},
+
+	ui = {
+		icons = {
+			package_installed = " ",
+			package_uninstalled = "󰚌 ",
+			package_pending = "➜",
+		},
+		border = "rounded",
+		height = 0.8,
+	},
 }
