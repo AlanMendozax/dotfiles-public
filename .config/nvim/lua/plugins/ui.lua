@@ -10,21 +10,11 @@ return {
 				},
 				opts = { skip = true },
 			})
-			local focused = true
-			vim.api.nvim_create_autocmd("FocusGained", {
-				callback = function()
-					focused = true
-				end,
-			})
-			vim.api.nvim_create_autocmd("FocusLost", {
-				callback = function()
-					focused = false
-				end,
-			})
+
 			table.insert(opts.routes, 1, {
 				filter = {
 					cond = function()
-						return not focused
+						return not vim.g.ui_focused
 					end,
 				},
 				view = "notify_send",
@@ -40,15 +30,6 @@ return {
 				},
 			}
 
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "markdown",
-				callback = function(event)
-					vim.schedule(function()
-						require("noice.text.markdown").keys(event.buf)
-					end)
-				end,
-			})
-
 			opts.presets.lsp_doc_border = true
 		end,
 	},
@@ -60,22 +41,11 @@ return {
 		},
 	},
 
-	{
-		"snacks.nvim",
-		opts = {
-			scroll = { enabled = false },
-		},
-		keys = {},
-	},
-
 	-- buffer line
 	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
-		keys = {
-			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-		},
+
 		opts = {
 			options = {
 				mode = "tabs",
@@ -102,7 +72,7 @@ return {
 					readonly_icon = " 󰌾 ",
 				}),
 			}
-      opts.sections.lualine_z = { "encoding" }
+			opts.sections.lualine_z = { "encoding" }
 		end,
 	},
 
@@ -113,10 +83,9 @@ return {
 			plugins = {
 				gitsigns = true,
 				tmux = true,
-				kitty = { enabled = false, font = "+2" },
+				--kitty = { enabled = false, font = "+2" },
 			},
 		},
-		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
 	},
 
 	{
@@ -129,7 +98,7 @@ return {
 		opts = {
 			dashboard = {
 				preset = {
-          header = [[
+					header = [[
 
       ██═╗      ████████████████╗
      ████╚╗     ╚══════██╔════██║

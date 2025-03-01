@@ -39,10 +39,13 @@ keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
+-- Zen mode
+keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
+
 -- New tab
 keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+keymap.set("n", "<tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
+keymap.set("n", "<s-tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)

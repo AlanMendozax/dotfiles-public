@@ -4,8 +4,6 @@ return {
 		"williamboman/mason.nvim",
 		opts = function(_, opts)
 			vim.list_extend(opts.ensure_installed, {
-				"stylua",
-				"selene",
 				"luacheck",
 				"shellcheck",
 				"shfmt",
@@ -68,8 +66,8 @@ return {
 					},
 				},
 				lua_ls = {
-          mason = false,
 					-- enabled = false,
+					mason = false,
 					single_file_support = true,
 					settings = {
 						Lua = {
