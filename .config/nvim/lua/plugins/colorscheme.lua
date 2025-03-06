@@ -7,10 +7,10 @@ return {
 			on_colors = function(colors)
 				colors.bg_float = "#000000"
 				colors.base03 = "#000000"
-				colors.base02 = "#111111"
+				colors.base02 = "#222222"
 			end,
 			on_highlights = function(highlights, colors)
-				highlights.CursorLine = { bg = "#111111" }
+				highlights.CursorLine = { bg = "#222222" }
 				highlights.DiagnosticVirtualTextWarn = { fg = colors.yellow500 }
 				highlights.DiagnosticVirtualTextError = { fg = colors.red500 }
 				highlights.DiagnosticVirtualTextHint = { fg = colors.cyan500 }
