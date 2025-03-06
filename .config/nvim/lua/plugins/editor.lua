@@ -235,9 +235,9 @@ return {
 		"saghen/blink.cmp",
 		opts = {
 			completion = {
-				menu = {
-					winblend = vim.o.pumblend,
-				},
+				--menu = {
+				--winblend = vim.o.pumblend,
+				--},
 			},
 			signature = {
 				window = {
