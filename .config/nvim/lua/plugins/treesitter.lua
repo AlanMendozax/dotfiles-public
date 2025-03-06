@@ -6,7 +6,6 @@ return {
 		opts = {
 			ensure_installed = {
 				"astro",
-				"bash",
 				"c",
 				"cmake",
 				"cpp",
@@ -17,7 +16,6 @@ return {
 				"graphql",
 				"http",
 				"html",
-				"lua",
 				"java",
 				"javascript",
 				"php",

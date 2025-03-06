@@ -132,3 +132,9 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_user_command("ToggleAutoformat", function()
 	require("craftzdog.lsp").toggleAutoformat()
 end, {})
+
+-- Syntax highlight for .conf files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.conf",
+	command = "set filetype=tmux",
+})
