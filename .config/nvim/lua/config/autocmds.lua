@@ -127,3 +127,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		end)
 	end,
 })
+
+-- Format on save
+vim.api.nvim_create_user_command("ToggleAutoformat", function()
+	require("craftzdog.lsp").toggleAutoformat()
+end, {})

@@ -50,13 +50,14 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 -- Zen mode
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
--- New tab
-keymap.set("n", "te", ":tabedit")
+-- Tabs
 keymap.set("n", "<tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
 keymap.set("n", "<s-tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
+
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
+
 -- Move window
 keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
@@ -81,7 +82,3 @@ end)
 keymap.set("n", "<leader>i", function()
 	require("craftzdog.lsp").toggleInlayHints()
 end)
-
-vim.api.nvim_create_user_command("ToggleAutoformat", function()
-	require("craftzdog.lsp").toggleAutoformat()
-end, {})
