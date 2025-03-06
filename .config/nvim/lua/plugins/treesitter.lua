@@ -67,6 +67,14 @@ return {
 				},
 			})
 			vim.treesitter.language.register("markdown", "mdx")
+
+			-- TMUX
+			vim.filetype.add({
+				extension = {
+					conf = "tmux",
+				},
+			})
+			vim.treesitter.language.register("tmux", "conf")
 		end,
 	},
 }
