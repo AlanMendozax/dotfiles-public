@@ -37,9 +37,6 @@ keymap.set("n", "dw", 'vb"_d')
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
--- Save with root permission (not working for now)
---vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
-
 -- Disable continuations
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
@@ -53,6 +50,14 @@ keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 -- Tabs
 keymap.set("n", "<tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
 keymap.set("n", "<s-tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
+
+-- Buffers
+keymap.set("n", "<leader>th", function()
+	require("close_buffers").delete({ type = "hidden" })
+end, { desc = "Close hidden buffers" })
+keymap.set("n", "<leader>tu", function()
+	require("close_buffers").delete({ type = "nameless" })
+end, { desc = "Close Nameless Buffers" })
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -77,8 +82,73 @@ end, opts)
 
 keymap.set("n", "<leader>r", function()
 	require("craftzdog.hsl").replaceHexWithHSL()
-end)
+end, { desc = "Replace HEX with HSL" })
 
 keymap.set("n", "<leader>i", function()
 	require("craftzdog.lsp").toggleInlayHints()
 end)
+
+-- Telescope
+keymap.set("n", "<leader>fP", function()
+	require("telescope.builtin").find_files({
+		cwd = require("lazy.core.config").options.root,
+	})
+end, { desc = "Find plugin file" })
+keymap.set("n", ";f", function()
+	local builtin = require("telescope.builtin")
+	builtin.find_files({
+		no_ignore = false,
+		hidden = true,
+	})
+end, { desc = "Lists files in your current working directory, respects .gitignore" })
+keymap.set(
+	"n",
+	";r",
+	function()
+		local builtin = require("telescope.builtin")
+		builtin.live_grep({
+			additional_args = { "--hidden" },
+		})
+	end,
+	{
+		desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+	}
+)
+keymap.set("n", "\\\\", function()
+	local builtin = require("telescope.builtin")
+	builtin.buffers()
+end, { desc = "Lists open buffers" })
+keymap.set("n", ";t", function()
+	local builtin = require("telescope.builtin")
+	builtin.help_tags()
+end, { desc = "Lists available help tags and opens a new window with the relevant help info on <cr>" })
+keymap.set("n", ";;", function()
+	local builtin = require("telescope.builtin")
+	builtin.resume()
+end, { desc = "Resume the previous telescope picker" })
+keymap.set("n", ";e", function()
+	local builtin = require("telescope.builtin")
+	builtin.diagnostics()
+end, { desc = "Lists diagnostics for all open buffers or a specific buffer" })
+keymap.set("n", ";s", function()
+	local builtin = require("telescope.builtin")
+	builtin.treesitter()
+end, { desc = "Lists function names, variables, from Treesitter" })
+keymap.set("n", "sf", function()
+	local telescope = require("telescope")
+
+	local function telescope_buffer_dir()
+		return vim.fn.expand("%:p:h")
+	end
+
+	telescope.extensions.file_browser.file_browser({
+		path = "%:p:h",
+		cwd = telescope_buffer_dir(),
+		respect_gitignore = false,
+		hidden = true,
+		grouped = true,
+		previewer = false,
+		initial_mode = "normal",
+		layout_config = { height = 40 },
+	})
+end, { desc = "Open file browser with the path of the current buffer" })
