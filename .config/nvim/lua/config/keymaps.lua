@@ -90,8 +90,6 @@ end)
 
 -- Telescope
 local keys = require("lazyvim.plugins.lsp.keymaps").get()
-local actions = require("telescope.actions")
-local fb_actions = require("telescope").extensions.file_browser.actions
 
 vim.list_extend(keys, {
 	{
@@ -166,32 +164,3 @@ keymap.set("n", ";s", function()
 	local builtin = require("telescope.builtin")
 	builtin.treesitter()
 end, { desc = "Lists function names, variables, from Treesitter" })
-
--- Telescope file browser
--- keymap.set("n", "N", function()
--- 	fb_actions.create()
--- end, { desc = "Create file/directory" })
--- keymap.set("n", "h", function()
--- 	fb_actions.goto_parent_dir()
--- end, { desc = "Goto parent dir" })
--- keymap.set("n", "/", function()
--- 	vim.cmd("startinsert")
--- end, { desc = "Insert mode in search" })
--- keymap.set("n", "<C-u>", function()
--- 	local picker = require("telescope.actions.state").get_current_picker(vim.api.nvim_get_current_buf())
--- 	for i = 1, 10 do
--- 		actions.move_selection_previous(picker)
--- 	end
--- end, { desc = "Move selection up" })
--- keymap.set("n", "<C-d>", function()
--- 	local picker = require("telescope.actions.state").get_current_picker(vim.api.nvim_get_current_buf())
--- 	for i = 1, 10 do
--- 		actions.move_selection_next(picker)
--- 	end
--- end, { desc = "Move selection down" })
--- keymap.set("n", "<PageUp>", function()
--- 	actions.preview_scrolling_up()
--- end, { desc = "Scroll up" })
--- keymap.set("n", "<PageDown>", function()
--- 	actions.preview_scrolling_down()
--- end, { desc = "Scroll down" })
