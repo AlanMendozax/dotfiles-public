@@ -86,7 +86,7 @@ return {
 			plugins = {
 				gitsigns = true,
 				tmux = true,
-				--kitty = { enabled = false, font = "+2" },
+				kitty = { enabled = false, font = "+2" },
 			},
 		},
 	},
@@ -101,6 +101,7 @@ return {
 	{
 		"folke/snacks.nvim",
 		opts = {
+			scroll = { enabled = false },
 			dashboard = {
 				preset = {
 					header = [[
@@ -117,6 +118,7 @@ return {
 				},
 			},
 		},
+		keys = {},
 	},
 
 	ui = {

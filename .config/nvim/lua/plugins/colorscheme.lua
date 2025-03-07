@@ -4,6 +4,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
+			transparent = true,
 			on_colors = function(colors)
 				colors.bg_float = "#000000"
 				colors.base03 = "#000000"
