@@ -89,6 +89,43 @@ keymap.set("n", "<leader>i", function()
 end)
 
 -- Telescope
+local keys = require("lazyvim.plugins.lsp.keymaps").get()
+local actions = require("telescope.actions")
+local fb_actions = require("telescope").extensions.file_browser.actions
+
+vim.list_extend(keys, {
+	{
+		"gd",
+		function()
+			-- DO NOT REUSE WINDOW
+			require("telescope.builtin").lsp_definitions({ reuse_win = false })
+		end,
+		desc = "Goto definition",
+		has = "definition",
+	},
+	{
+		"sf",
+		function()
+			local telescope = require("telescope")
+
+			local function telescope_buffer_dir()
+				return vim.fn.expand("%:p:h")
+			end
+
+			telescope.extensions.file_browser.file_browser({
+				cwd = telescope_buffer_dir(),
+				respect_gitignore = false,
+				hidden = true,
+				grouped = true,
+				previewer = false,
+				initial_mode = "normal",
+				layout_config = { height = 40 },
+			})
+		end,
+		desc = "Open file browser with the path of the current buffer",
+	},
+})
+
 keymap.set("n", "<leader>fP", function()
 	require("telescope.builtin").find_files({
 		cwd = require("lazy.core.config").options.root,
@@ -101,19 +138,14 @@ keymap.set("n", ";f", function()
 		hidden = true,
 	})
 end, { desc = "Lists files in your current working directory, respects .gitignore" })
-keymap.set(
-	"n",
-	";r",
-	function()
-		local builtin = require("telescope.builtin")
-		builtin.live_grep({
-			additional_args = { "--hidden" },
-		})
-	end,
-	{
-		desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
-	}
-)
+keymap.set("n", ";r", function()
+	local builtin = require("telescope.builtin")
+	builtin.live_grep({
+		additional_args = { "--hidden" },
+	})
+end, {
+	desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+})
 keymap.set("n", "\\\\", function()
 	local builtin = require("telescope.builtin")
 	builtin.buffers()
@@ -134,21 +166,32 @@ keymap.set("n", ";s", function()
 	local builtin = require("telescope.builtin")
 	builtin.treesitter()
 end, { desc = "Lists function names, variables, from Treesitter" })
-keymap.set("n", "sf", function()
-	local telescope = require("telescope")
 
-	local function telescope_buffer_dir()
-		return vim.fn.expand("%:p:h")
-	end
-
-	telescope.extensions.file_browser.file_browser({
-		path = "%:p:h",
-		cwd = telescope_buffer_dir(),
-		respect_gitignore = false,
-		hidden = true,
-		grouped = true,
-		previewer = false,
-		initial_mode = "normal",
-		layout_config = { height = 40 },
-	})
-end, { desc = "Open file browser with the path of the current buffer" })
+-- Telescope file browser
+-- keymap.set("n", "N", function()
+-- 	fb_actions.create()
+-- end, { desc = "Create file/directory" })
+-- keymap.set("n", "h", function()
+-- 	fb_actions.goto_parent_dir()
+-- end, { desc = "Goto parent dir" })
+-- keymap.set("n", "/", function()
+-- 	vim.cmd("startinsert")
+-- end, { desc = "Insert mode in search" })
+-- keymap.set("n", "<C-u>", function()
+-- 	local picker = require("telescope.actions.state").get_current_picker(vim.api.nvim_get_current_buf())
+-- 	for i = 1, 10 do
+-- 		actions.move_selection_previous(picker)
+-- 	end
+-- end, { desc = "Move selection up" })
+-- keymap.set("n", "<C-d>", function()
+-- 	local picker = require("telescope.actions.state").get_current_picker(vim.api.nvim_get_current_buf())
+-- 	for i = 1, 10 do
+-- 		actions.move_selection_next(picker)
+-- 	end
+-- end, { desc = "Move selection down" })
+-- keymap.set("n", "<PageUp>", function()
+-- 	actions.preview_scrolling_up()
+-- end, { desc = "Scroll up" })
+-- keymap.set("n", "<PageDown>", function()
+-- 	actions.preview_scrolling_down()
+-- end, { desc = "Scroll down" })
