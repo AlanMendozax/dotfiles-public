@@ -74,7 +74,6 @@ return {
 				}),
 			}
 			opts.sections.lualine_z = { "encoding" }
-			opts.options.theme = _G.get_lualine_theme()
 		end,
 	},
 

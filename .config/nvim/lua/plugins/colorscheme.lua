@@ -8,12 +8,7 @@ return {
 			transparent = true,
 		},
 		config = function(_, opts)
-			-- Check if we are in Termux and load the configuration
-			if vim.loop.os_uname().sysname == "Linux" and vim.uv.fs_stat("/data/data/com.termux") then
-				require("termux.colorscheme").setup()
-			else
-				require("solarized-osaka").setup(opts)
-			end
+			require("solarized-osaka").setup(opts)
 			vim.cmd("colorscheme solarized-osaka")
 		end,
 	},
