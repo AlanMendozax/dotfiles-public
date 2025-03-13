@@ -139,10 +139,4 @@ return {
 			setup = {},
 		},
 	},
-	{
-		"neovim/nvim-lspconfig",
-		opts = function()
-			require("config.keymaps")
-		end,
-	},
 }
