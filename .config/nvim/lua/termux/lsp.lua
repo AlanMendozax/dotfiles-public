@@ -3,6 +3,7 @@ local M = {}
 function M.setup()
 	local disabled_lsp = {
 		"lua_ls",
+		"clangd",
 	}
 
 	local lspconfig = require("lspconfig")
@@ -17,6 +18,8 @@ function M.setup()
 
 	local mason_exclude = {
 		"lua-language-server",
+		"clangd",
+		"selene",
 		"stylua",
 		"ruff",
 	}
@@ -39,6 +42,37 @@ function M.setup()
 		ensure_installed = filter,
 		automatic_installation = true,
 	})
+
+	local function is_text_file(binary)
+		local file = io.open(binary, "rb")
+		if not file then
+			return false
+		end
+
+		local chunk = file:read(4) or ""
+		file:close()
+		return not chunk:match("^\x7FELF")
+	end
+
+	local function needs_fix(binary)
+		local file = io.open(binary, "r")
+		if not file then
+			return false
+		end
+
+		local first_line = file:read("*l") or ""
+		file:close()
+		return is_text_file(binary) and not first_line:match("/data/data/com.termux/")
+	end
+
+	local mason_path = os.getenv("HOME") .. "/.local/share/nvim/mason/bin/"
+
+	for _, binary in ipairs(vim.fn.glob(mason_path .. "*", true, true)) do
+		if vim.fn.filereadable(binary) == 1 and needs_fix(binary) then
+			os.execute("termux-fix-shebang " .. binary)
+			vim.notify("Fixed shebang for: " .. binary .. " 😃", vim.log.levels.INFO)
+		end
+	end
 end
 
 return M

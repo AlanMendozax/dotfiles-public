@@ -10,8 +10,10 @@ return {
 				"css-lsp",
 				"luacheck",
 				"pyright",
+				"selene",
 				"shellcheck",
 				"shfmt",
+				"stylua",
 				"tailwindcss-language-server",
 				"typescript-language-server",
 			})
@@ -63,6 +65,7 @@ return {
 				},
 				html = {},
 				pyright = {},
+				clangd = {},
 				yamlls = {
 					settings = {
 						yaml = {
