@@ -101,28 +101,43 @@ vim.list_extend(keys, {
 		desc = "Goto definition",
 		has = "definition",
 	},
-	{
-		"sf",
-		function()
-			local telescope = require("telescope")
-
-			local function telescope_buffer_dir()
-				return vim.fn.expand("%:p:h")
-			end
-
-			telescope.extensions.file_browser.file_browser({
-				cwd = telescope_buffer_dir(),
-				respect_gitignore = false,
-				hidden = true,
-				grouped = true,
-				previewer = false,
-				initial_mode = "normal",
-				layout_config = { height = 40 },
-			})
-		end,
-		desc = "Open file browser with the path of the current buffer",
-	},
 })
+
+keymap.set("n", "sf", function()
+	local telescope = require("telescope")
+	local actions = require("telescope.actions")
+	local fb_actions = require("telescope").extensions.file_browser.actions
+
+	local function telescope_buffer_dir()
+		return vim.fn.expand("%:p:h")
+	end
+
+	telescope.extensions.file_browser.file_browser({
+		cwd = telescope_buffer_dir(),
+		attach_mappings = function(_, map)
+			-- Your custom mappings
+			map("n", "N", fb_actions.create)
+			map("n", "h", fb_actions.goto_parent_dir)
+			map("n", "/", function()
+				vim.cmd("startinsert")
+			end)
+			map("n", "<C-u>", function(prompt_bufnr)
+				for i = 1, 10 do
+					actions.move_selection_previous(prompt_bufnr)
+				end
+			end)
+			map("n", "<C-d>", function(prompt_bufnr)
+				for i = 1, 10 do
+					actions.move_selection_next(prompt_bufnr)
+				end
+			end)
+			map("n", "<PageUp>", actions.preview_scrolling_up)
+			map("n", "<PageDown>", actions.preview_scrolling_down)
+
+			return true
+		end,
+	})
+end, { desc = "Open file browser with the path of the current buffer" })
 
 keymap.set("n", "<leader>fP", function()
 	require("telescope.builtin").find_files({
