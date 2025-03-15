@@ -35,17 +35,12 @@ return {
 		config = function(_, opts)
 			local telescope = require("telescope")
 
-			opts = opts or {}
-
 			opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
 				wrap_results = true,
 				layout_strategy = "horizontal",
 				layout_config = { prompt_position = "top" },
 				sorting_strategy = "ascending",
 				winblend = 0,
-				mappings = {
-					n = {},
-				},
 			})
 			opts.pickers = {
 				diagnostics = {
@@ -86,11 +81,6 @@ return {
 	{
 		"saghen/blink.cmp",
 		opts = {
-			completion = {
-				--menu = {
-				--winblend = vim.o.pumblend,
-				--},
-			},
 			signature = {
 				window = {
 					winblend = vim.o.pumblend,
