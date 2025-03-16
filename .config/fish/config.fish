@@ -1,6 +1,10 @@
 # Clear fish shell welcome message
 set fish_greeting ""
 
+# theme
+set -g theme_color_scheme terminal-dark
+set -g fish_prompt_pwd_dir_length 1
+
 # Aliases
 alias ls "ls -p -G"
 alias la "ls -A"
@@ -49,7 +53,6 @@ switch (uname)
         else
             source (dirname (status --current-filename))/config-linux.fish
         end
-
 end
 
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
