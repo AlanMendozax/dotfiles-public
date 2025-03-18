@@ -30,7 +30,7 @@ set -g GOPATH $HOME/go
 
 # Avoid duplicates in PATH.
 if not set -q TMUX
-    set -x PATH $PATH $GOPATH/bin $JAVA_HOME/bin node_modules/.bin
+    set -x PATH $PATH $GOPATH/bin $JAVA_HOME/bin node_modules/.bin ~/.local/bin/
 end
 
 # Eza
