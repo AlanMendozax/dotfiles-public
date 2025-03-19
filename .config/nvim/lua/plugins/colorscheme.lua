@@ -20,11 +20,12 @@ return {
 					highlights.DiagnosticVirtualTextInfo = { fg = colors.blue500 }
 					highlights.FloatBorder = { fg = "#222222" }
 					highlights.SnacksIndent = { fg = "#222222", nocombine = true }
-					highlights.SnacksPickerBorder = { fg = "#222222" }
+					highlights.SnacksPickerListCursorLine = { bg = "#222222" }
 					highlights.TelescopePromptTitle = { fg = colors.cyan500 }
 					highlights.TelescopePreviewTitle = { fg = colors.yellow500 }
 					highlights.TelescopeResultsTitle = { fg = colors.orange500 }
-					highlights.WinSeparator = { fg = "#222222", bold = true }
+					highlights.TelescopeSelection = { bg = "#222222" }
+					highlights.Visual = { bg = "#444444" }
 				end,
 			}
 		end,
@@ -32,7 +33,7 @@ return {
 
 	get_lualine_theme = function()
 		local custom_osaka = require("lualine.themes.solarized-osaka")
-		custom_osaka.normal.a = { fg = "#eee8d5", bg = "#222222" }
+		custom_osaka.normal.a = { fg = "#eee8d5", bg = "#333333" }
 		custom_osaka.normal.c.bg = "#000000"
 		return custom_osaka
 	end,
