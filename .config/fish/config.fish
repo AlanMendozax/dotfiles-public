@@ -33,6 +33,35 @@ if not set -q TMUX
     set -x PATH $PATH $GOPATH/bin $JAVA_HOME/bin node_modules/.bin ~/.local/bin/
 end
 
+# TMUX
+function tmux_status_update
+    # Obtiene la cantidad de ventanas en la sesión actual
+    set -l window_count (tmux list-windows | wc -l)
+
+    # Si solo hay una ventana, usa la configuración simplificada
+    if test $window_count -eq 1
+        tmux set -g status-left ""
+        tmux set -g status-right "#[fg=#586e75,bg=#000000] #(whoami)@#h:#S"
+        tmux setw -g window-status-format " "
+        tmux setw -g window-status-current-format " "
+    else
+        # Configuración para múltiples ventanas
+        tmux set -g status-style "fg=#586e75,bg=#000000"
+        tmux setw -g window-status-activity-style "underscore,fg=#839496,bg=#000000"
+        tmux setw -g window-status-separator ""
+        tmux setw -g window-status-style "NONE,fg=#839496,bg=#000000"
+        tmux setw -g window-status-format '#[fg=#333333,bg=#000000]#{pane_current_command}: #{b:pane_current_path} | #[fg=#000000,bg=#000000,nobold,nounderscore,noitalics]'
+        tmux setw -g window-status-current-format '#[fg=#93a1a1, bg=#000000,bold]#{pane_current_command}: #{b:pane_current_path}#[fg=#b58900, bg=#000000,bold] | '
+    end
+
+    # Verifica si hay algún panel ejecutando Neovim en la sesión actual
+    if tmux list-panes -F "#{pane_current_command}" | grep -q nvim
+        tmux set-option -g status-position top
+    else
+        tmux set-option -g status-position bottom
+    end
+end
+
 # Eza
 if type -q eza
     alias ll "eza -l -G --icons"
