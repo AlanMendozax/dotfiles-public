@@ -70,7 +70,10 @@ function M.setup()
 	for _, binary in ipairs(vim.fn.glob(mason_path .. "*", true, true)) do
 		if vim.fn.filereadable(binary) == 1 and needs_fix(binary) then
 			os.execute("termux-fix-shebang " .. binary)
-			vim.notify("Fixed shebang for: " .. binary .. " 😃", vim.log.levels.INFO)
+			vim.notify("Fixed shebang for: " .. binary, vim.log.levels.INFO, {
+				icon = "😃",
+				id = "happy",
+			})
 		end
 	end
 end
