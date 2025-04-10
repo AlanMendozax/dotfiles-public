@@ -21,6 +21,7 @@ return {
 					highlights.FloatBorder = { fg = "#222222" }
 					highlights.SnacksIndent = { fg = "#222222", nocombine = true }
 					highlights.SnacksPickerListCursorLine = { bg = "#222222" }
+					highlights.TabLineFill = { bg = "#000000" }
 					highlights.TelescopePromptTitle = { fg = colors.cyan500 }
 					highlights.TelescopePreviewTitle = { fg = colors.yellow500 }
 					highlights.TelescopeResultsTitle = { fg = colors.orange500 }
