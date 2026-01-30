@@ -1,6 +1,7 @@
 # Clear fish shell welcome message
 set fish_greeting ""
 
+# True color support
 set -gx TERM xterm-256color
 
 # Aliases
