@@ -1,2 +1,4 @@
 *~
 *~.swp
+.config/fish/fish_variables
+.config/fish/completions/

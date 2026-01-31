@@ -1,0 +1,25 @@
+[note]
+language = "en"
+default-title = "Untitled"
+filename = "{{id}}-{{slug title}}"
+extension = "md"
+
+# Configuration for index notes
+[group.index.note]
+filename = "index"
+extension = "md"
+template = "index.md"
+
+[tool]
+editor = "nvim"
+shell = "/usr/bin/fish"
+
+[alias]
+# Create a new note
+n = "zk new --id $(date +%Y%m%d%H%M) --template default.md $argv"
+
+# Edit the last modified note
+editlast = "zk edit --limit 1 --sort modified- $argv"
+
+# List notes
+ls = "zk list $argv"
