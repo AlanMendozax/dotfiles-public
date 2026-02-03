@@ -1,5 +1,2 @@
 *~
-*~.swp
-.config/fish/fish_variables
-.config/fish/completions/
-.config/fish/functions/fish_prompt.fish
+*.log
