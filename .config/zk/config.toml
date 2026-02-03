@@ -1,7 +1,13 @@
 [note]
 language = "en"
+
+# The default title used for new note, if no '--title' flag is provided.
 default-title = "Untitled"
+
+# Template used to generate a note's filename, without extension.
 filename = "{{id}}-{{slug title}}"
+
+# The file extension used for notes.
 extension = "md"
 
 # Configuration for index notes
@@ -18,8 +24,29 @@ shell = "/usr/bin/fish"
 # Create a new note
 n = "zk new --id $(date +%Y%m%d%H%M) --template default.md $argv"
 
+# Create a new concept
+nc = "zk new --id $(date +%Y%m%d%H%M) --template concept.md $argv"
+
+# Create a new software guide
+nsg = "zk new --id $(date +%Y%m%d%H%M) --template software-guide.md $argv"
+
+# Create a new hardware guide
+nhg = "zk new --id $(date +%Y%m%d%H%M) --template hardware-guide.md $argv"
+
+# Create a new index
+nidx = "zk new --no-input --group index $argv"
+
+# Create a new design-tradeoff
+ndiff = "zk new --id $(date +%Y%m%d%H%M) --template design-tradeoff.md $argv"
+
 # Edit the last modified note
-editlast = "zk edit --limit 1 --sort modified- $argv"
+edlast = "zk edit --limit 1 --sort modified- $argv"
 
 # List notes
-ls = "zk list $argv"
+ls = "zk list --interactive $argv"
+
+# List notes by tags
+t = "zk list --interactive --tag $argv"
+
+# Open the zk configuration file
+config = "vim $HOME/.config/zk/config.toml"
