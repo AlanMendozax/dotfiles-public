@@ -10,6 +10,9 @@ filename = "{{id}}-{{slug title}}"
 # The file extension used for notes.
 extension = "md"
 
+[extra]
+author = "Alan Mendoza"
+
 # Configuration for index notes
 [group.index.note]
 filename = "index"
