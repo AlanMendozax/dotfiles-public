@@ -74,7 +74,10 @@ return {
 				}),
 			}
 			opts.sections.lualine_z = { "encoding" }
-			--opts.options.theme = require("plugins.colorscheme").get_lualine_theme()
+			local custom_osaka = require("lualine.themes.solarized-osaka")
+			custom_osaka.normal.a = { fg = "#f5f5f5", bg = "#444444" }
+			custom_osaka.normal.c.bg = "#1c1c1f"
+			opts.options.theme = custom_osaka
 		end,
 	},
 

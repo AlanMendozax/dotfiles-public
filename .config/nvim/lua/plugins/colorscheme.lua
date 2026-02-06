@@ -8,7 +8,7 @@ return {
 				transparent = true,
 				on_colors = function(colors)
 					colors.bg_float = "#1c1c1f"
-					-- colors.base03 = "#1c1c1f"
+					colors.base03 = "#1c1c1f"
 					colors.base02 = "#444444"
 				end,
 				on_highlights = function(highlights, colors)
