@@ -18,7 +18,7 @@ return {
 					highlights.DiagnosticVirtualTextError = { fg = colors.red500 }
 					highlights.DiagnosticVirtualTextHint = { fg = colors.cyan500 }
 					highlights.DiagnosticVirtualTextInfo = { fg = colors.blue500 }
-					highlights.FloatBorder = { fg = "#222222" }
+					highlights.FloatBorder = { fg = "#444444" }
 					highlights.SnacksIndent = { fg = "#444444", nocombine = true }
 					highlights.SnacksPickerListCursorLine = { bg = "#222222" }
 					highlights.TabLineFill = { bg = "#1c1c1f" }
