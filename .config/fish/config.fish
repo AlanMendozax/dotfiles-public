@@ -9,7 +9,7 @@ set -g fish_color_comment DC322F
 set -g fish_color_autosuggestion 808080
 set -g fish_color_end 859900
 set -g fish_color_cwd 859900
-set -g __fish_git_prompt_color_cleanstate 859900 --bold
+set -g __fish_git_prompt_color_cleanstate 859900
 set -g __fish_git_prompt_color_dirtystate 268BD2
 set -g __fish_git_prompt_color_stagedstate B58900
 set -g __fish_git_prompt_color_branch 6C71C4 --bold
