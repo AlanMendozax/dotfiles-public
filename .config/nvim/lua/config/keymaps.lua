@@ -70,7 +70,11 @@ keymap.set("n", "<leader>tu", function()
 end, { desc = "Close Nameless Buffers" })
 
 -- Zk notes
-keymap.set("n", ";z", "<cmd>ZkNotes<cr>", opts, { desc = "See all notes" })
+keymap.set("n", ";za", "<cmd>ZkNotes<cr>", opts, { desc = "See all notes" })
+-- Search for the notes matching the current visual selection.
+keymap.set("v", ";zf", ":'<,'>ZkMatch<cr>", opts, { desc = "Search notes with visual selection" })
+-- Open notes associated with the selected tags.
+keymap.set("n", ";zt", "<cmd>ZkTags<cr>", opts, { desc = "Search notes with selected tags" })
 
 -- Zen mode
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
