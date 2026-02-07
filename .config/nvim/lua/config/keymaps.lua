@@ -69,6 +69,12 @@ keymap.set("n", "<leader>tu", function()
 	require("close_buffers").delete({ type = "nameless" })
 end, { desc = "Close Nameless Buffers" })
 
+-- Zk notes
+keymap.set("n", ";z", "<cmd>ZkNotes<cr>", opts, { desc = "See all notes" })
+
+-- Zen mode
+keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
+
 -- Telescope
 -- local keys = require("lazyvim.plugins.lsp.keymaps").get()
 --
