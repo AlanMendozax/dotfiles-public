@@ -30,7 +30,7 @@ keymap.set("n", "<tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
 keymap.set("n", "<s-tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
 
 -- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", opts)
+keymap.set("n", "<C-m>", "<C-i>", opts, { desc = "Jump forward" })
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -80,19 +80,10 @@ keymap.set("n", ";zt", "<cmd>ZkTags<cr>", opts, { desc = "Search notes with sele
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
 -- Telescope
--- local keys = require("lazyvim.plugins.lsp.keymaps").get()
---
--- vim.list_extend(keys, {
--- 	{
--- 		"gd",
--- 		function()
--- 			-- DO NOT REUSE WINDOW
--- 			require("telescope.builtin").lsp_definitions({ reuse_win = false })
--- 		end,
--- 		desc = "Goto definition",
--- 		has = "definition",
--- 	},
--- })
+keymap.set("n", "gd", function()
+	-- DO NOT REUSE WINDOW
+	require("telescope.builtin").lsp_definitions({ reuse_win = false })
+end, { desc = "Goto definition" })
 
 keymap.set("n", "sf", function()
 	local telescope = require("telescope")
@@ -166,7 +157,7 @@ keymap.set("n", ";e", function()
 	local builtin = require("telescope.builtin")
 	builtin.diagnostics()
 end, { desc = "Lists diagnostics for all open buffers or a specific buffer" })
--- keymap.set("n", ";s", function()
--- 	local builtin = require("telescope.builtin")
--- 	builtin.treesitter()
--- end, { desc = "Lists function names, variables, from Treesitter" })
+keymap.set("n", ";s", function()
+	local builtin = require("telescope.builtin")
+	builtin.treesitter()
+end, { desc = "Lists function names, variables, from Treesitter" })

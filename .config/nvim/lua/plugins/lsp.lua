@@ -94,4 +94,15 @@ return {
 			setup = {},
 		},
 	},
+
+	-- Syntax highlight
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = {
+			ensure_installed = {
+				"fish",
+				"gitignore",
+			},
+		},
+	},
 }
