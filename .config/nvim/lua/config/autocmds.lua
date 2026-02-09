@@ -95,3 +95,26 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.conceallevel = 0
 	end,
 })
+
+-- Noice plugin
+vim.g.ui_focused = true
+vim.api.nvim_create_autocmd("FocusGained", {
+	callback = function()
+		vim.g.ui_focused = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("FocusLost", {
+	callback = function()
+		vim.g.ui_focused = false
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function(event)
+		vim.schedule(function()
+			require("noice.text.markdown").keys(event.buf)
+		end)
+	end,
+})
