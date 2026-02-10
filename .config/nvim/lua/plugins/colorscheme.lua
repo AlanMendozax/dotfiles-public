@@ -21,8 +21,7 @@ return {
 					highlights.FloatBorder = { fg = "#444444" }
 					highlights.SnacksIndent = { fg = "#444444", nocombine = true }
 					highlights.BlinkCmpMenuBorder = { fg = "#444444" }
-					highlights.BlinkCmpMenuSelection = { bg = "#333333" }
-					--highlights.BlinkCmpGhostText = { fg = "#808080" }
+					highlights.BlinkCmpMenuSelection = { bg = "#222222" }
 					highlights.SnacksPickerListCursorLine = { bg = "#222222" }
 					highlights.TabLineFill = { bg = "#1c1c1f" }
 					highlights.TelescopePromptTitle = { fg = colors.cyan500 }
