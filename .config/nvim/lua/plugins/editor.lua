@@ -99,7 +99,13 @@ return {
 				},
 			},
 			cmdline = {
+				enabled = true,
 				completion = {
+					list = {
+						selection = {
+							preselect = true,
+						},
+					},
 					menu = { auto_show = false },
 					ghost_text = { enabled = true },
 				},
