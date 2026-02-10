@@ -1,0 +1,1 @@
+require("cpp.lsp").setup()
