@@ -83,12 +83,25 @@ return {
 		opts = {
 			completion = {
 				menu = {
-					winblend = vim.o.pumblend,
+					--winblend = vim.o.pumblend,
+					border = "rounded",
 				},
+				documentation = {
+					window = {
+						border = "rounded",
+					},
+				},
+				ghost_text = { enabled = false },
 			},
 			signature = {
 				window = {
 					winblend = vim.o.pumblend,
+				},
+			},
+			cmdline = {
+				completion = {
+					menu = { auto_show = false },
+					ghost_text = { enabled = true },
 				},
 			},
 		},

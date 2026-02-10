@@ -12,7 +12,7 @@ return {
 					colors.base02 = "#444444"
 				end,
 				on_highlights = function(highlights, colors)
-					highlights.BlinkCmpMenu = { bg = "#222222" }
+					highlights.BlinkCmpMenu = { bg = "#1c1c1f" }
 					highlights.CursorLine = { bg = "#222222" }
 					highlights.DiagnosticVirtualTextWarn = { fg = colors.yellow500 }
 					highlights.DiagnosticVirtualTextError = { fg = colors.red500 }
@@ -20,6 +20,9 @@ return {
 					highlights.DiagnosticVirtualTextInfo = { fg = colors.blue500 }
 					highlights.FloatBorder = { fg = "#444444" }
 					highlights.SnacksIndent = { fg = "#444444", nocombine = true }
+					highlights.BlinkCmpMenuBorder = { fg = "#444444" }
+					highlights.BlinkCmpMenuSelection = { bg = "#333333" }
+					--highlights.BlinkCmpGhostText = { fg = "#808080" }
 					highlights.SnacksPickerListCursorLine = { bg = "#222222" }
 					highlights.TabLineFill = { bg = "#1c1c1f" }
 					highlights.TelescopePromptTitle = { fg = colors.cyan500 }
