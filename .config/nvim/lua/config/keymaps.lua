@@ -136,6 +136,7 @@ keymap.set(
 	"<cmd>ZkNew { group = 'index', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new index" }
 )
+keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 
 -- Zen mode
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
