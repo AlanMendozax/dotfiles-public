@@ -5,7 +5,7 @@ language = "en"
 default-title = "Untitled"
 
 # Template used to generate a note's filename, without extension.
-filename = "{{id}}-{{slug title}}"
+filename = "{{format-date now '%Y%m%d%H%M'}}-{{slug title}}"
 
 # The file extension used for notes.
 extension = "md"
@@ -25,22 +25,22 @@ shell = "/usr/bin/fish"
 
 [alias]
 # Create a new note
-n = "zk new --id $(date +%Y%m%d%H%M) --template default.md $argv"
+n = "zk new --template default.md $argv"
 
 # Create a new concept
-nc = "zk new --id $(date +%Y%m%d%H%M) --template concept.md $argv"
+nc = "zk new --template concept.md $argv"
 
 # Create a new software guide
-nsg = "zk new --id $(date +%Y%m%d%H%M) --template software-guide.md $argv"
+nsg = "zk new --template software-guide.md $argv"
 
 # Create a new hardware guide
-nhg = "zk new --id $(date +%Y%m%d%H%M) --template hardware-guide.md $argv"
+nhg = "zk new --template hardware-guide.md $argv"
+
+# Create a new design-tradeoff
+ndiff = "zk new --template design-tradeoff.md $argv"
 
 # Create a new index
 nidx = "zk new --no-input --group index $argv"
-
-# Create a new design-tradeoff
-ndiff = "zk new --id $(date +%Y%m%d%H%M) --template design-tradeoff.md $argv"
 
 # Edit the last modified note
 edlast = "zk edit --limit 1 --sort modified- $argv"

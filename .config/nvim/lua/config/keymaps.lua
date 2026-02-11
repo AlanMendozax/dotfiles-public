@@ -70,11 +70,72 @@ keymap.set("n", "<leader>tu", function()
 end, { desc = "Close Nameless Buffers" })
 
 -- Zk notes
-keymap.set("n", ";za", "<cmd>ZkNotes<cr>", opts, { desc = "See all notes" })
--- Search for the notes matching the current visual selection.
-keymap.set("v", ";zf", ":'<,'>ZkMatch<cr>", opts, { desc = "Search notes with visual selection" })
--- Open notes associated with the selected tags.
-keymap.set("n", ";zt", "<cmd>ZkTags<cr>", opts, { desc = "Search notes with selected tags" })
+keymap.set("n", ";za", "<cmd>ZkNotes<cr>", { unpack(opts), desc = "List of all existing notes" })
+keymap.set(
+	"v",
+	";zf",
+	":'<,'>ZkMatch<cr>",
+	{ unpack(opts), desc = "Search notes matching the current visual selection" }
+)
+keymap.set("n", ";zt", "<cmd>ZkTags<cr>", { unpack(opts), desc = "Search notes using a list of all existing tags" })
+keymap.set("n", ";zo", function()
+	local inp = vim.fn.input("Tags: ")
+	if inp == "" then
+		return
+	end
+
+	local tags = {}
+	for tag in string.gmatch(inp, "([^,]+)") do
+		tag = vim.trim(tag)
+		if tag ~= "" then
+			table.insert(tags, tag)
+		end
+	end
+
+	if #tags == 0 then
+		return
+	end
+
+	require("zk.commands").get("ZkNotes")({
+		tags = tags,
+	})
+end, vim.tbl_extend("force", opts, { desc = "Search notes by a given tag" }))
+keymap.set(
+	"n",
+	";zn",
+	"<cmd>ZkNew { template = 'default.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	{ unpack(opts), desc = "Create a new note" }
+)
+keymap.set(
+	"n",
+	";zc",
+	"<cmd>ZkNew { template = 'concept.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	{ unpack(opts), desc = "Create a new concept" }
+)
+keymap.set(
+	"n",
+	";zs",
+	"<cmd>ZkNew { template = 'software-guide.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	{ unpack(opts), desc = "Create a new software guide" }
+)
+keymap.set(
+	"n",
+	";zh",
+	"<cmd>ZkNew { template = 'hardware-guide.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	{ unpack(opts), desc = "Create a new hardware guide" }
+)
+keymap.set(
+	"n",
+	";zd",
+	"<cmd>ZkNew { template = 'design-tradeoff.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	{ unpack(opts), desc = "Create a new design-tradeoff" }
+)
+keymap.set(
+	"n",
+	";zi",
+	"<cmd>ZkNew { group = 'index', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	{ unpack(opts), desc = "Create a new index" }
+)
 
 -- Zen mode
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
