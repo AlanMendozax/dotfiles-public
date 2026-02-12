@@ -6,10 +6,14 @@ return {
 			local ui_config = require("plugins.ui")
 			opts.ui = ui_config.ui
 			vim.list_extend(opts.ensure_installed, {
-				"stylua",
+				"black",
+				"clangd",
+				"debugpy",
+				"pyright",
 				"selene",
 				"shellcheck",
 				"shfmt",
+				"stylua",
 			})
 		end,
 	},
@@ -21,8 +25,7 @@ return {
 			inlay_hints = { enabled = false },
 			---@type lspconfig.options
 			servers = {
-				zk = {
-					mason = false,
+				clangd = {
 					single_file_support = true,
 				},
 				lua_ls = {
@@ -90,6 +93,13 @@ return {
 						},
 					},
 				},
+				pyright = {
+					single_file_support = true,
+				},
+				zk = {
+					mason = false,
+					single_file_support = true,
+				},
 			},
 			setup = {},
 		},
@@ -100,8 +110,12 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
+				"c",
+				"cmake",
+				"cpp",
 				"fish",
 				"gitignore",
+				"make",
 			},
 		},
 	},
