@@ -30,7 +30,7 @@ keymap.set("n", "<tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
 keymap.set("n", "<s-tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
 
 -- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", opts, { desc = "Jump forward" })
+keymap.set("n", "<C-m>", "<C-i>", { unpack(opts), desc = "Jump forward" })
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -139,7 +139,7 @@ keymap.set(
 keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 
 -- Zen mode
-keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
+keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Zen Mode" })
 
 -- Telescope
 keymap.set("n", "gd", function()
